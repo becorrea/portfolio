@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estudo de caso: Clínica Horizonte — Bernardo Corrêa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+:root{
+  --paper:#F5F3EF; --paper-2:#ECE9E3; --paper-3:#E4E1DA;
+  --ink:#181B20; --ink-2:#3F444D; --muted:#5F646E;
+  --line:rgba(24,27,32,.12); --line-2:rgba(24,27,32,.2);
+  --blue:#374CFF; --blue-2:#2335E6; --lav:#B8C7FF; --gray:#DDE0E5;
+  --d-muted:#A4A9B4; --d-line:rgba(245,243,239,.14);
+  --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:var(--ink)} a:hover{color:var(--blue)}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:400}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.dark :focus-visible{outline-color:var(--lav)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:10px;font:500 14px var(--sans);text-decoration:none}
+.skip:focus{top:12px;color:var(--paper)}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.pg{min-height:100vh;overflow-x:clip;animation:pageIn .55s var(--ease) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4.2vw,56px)}
+
+/* ---------- type ---------- */
+.eyebrow{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.dark .eyebrow{color:var(--d-muted)}
+.h-display{font-family:var(--serif);font-size:clamp(50px,8.4vw,136px);line-height:.93;letter-spacing:-.025em}
+.h2{font-family:var(--serif);font-size:clamp(40px,5.4vw,84px);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
+.h3{font-family:var(--serif);font-size:clamp(30px,3vw,44px);line-height:1.02;letter-spacing:-.01em}
+.h4{font:500 19px/1.3 var(--sans);letter-spacing:-.01em}
+em,.it{font-style:italic;font-family:var(--serif)}
+.blue{color:var(--blue)} .dark .lav{color:var(--lav)}
+.lead{font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:var(--ink-2);text-wrap:pretty;max-width:34em}
+.body{font-size:16px;line-height:1.65;color:var(--ink-2);text-wrap:pretty}
+.small{font-size:14px;line-height:1.55;color:var(--muted)}
+.mono{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lead,.dark .body{color:#C9CCD3}
+.dark .small{color:var(--d-muted)}
+.dark a{color:var(--paper)} .dark a:hover{color:var(--lav)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:500 15px/1 var(--sans);letter-spacing:-.005em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,box-shadow .25s;white-space:nowrap}
+.btn .arr{transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-2);color:#fff;box-shadow:0 10px 30px -12px rgba(55,76,255,.7)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#000;color:var(--paper)}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--ink);color:var(--ink)}
+.dark .btn-line{border-color:rgba(245,243,239,.3);color:var(--paper)}
+.dark .btn-line:hover{border-color:var(--paper);color:var(--paper)}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.btn-paper:hover{background:#fff;color:var(--ink)}
+.mag{transform:translate(var(--tx,0px),var(--ty,0px));transition:transform .35s var(--ease),background-color .2s,color .2s,border-color .2s,box-shadow .25s}
+.tlink{display:inline-flex;align-items:center;gap:8px;font:500 15px/1.2 var(--sans);text-decoration:none;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line-2);transition:border-color .2s,color .2s}
+.tlink:hover{border-color:var(--blue);color:var(--blue)}
+.tlink:hover .arr{transform:translateX(3px)}
+.tlink .arr{transition:transform .25s var(--ease)}
+.dark .tlink{color:var(--paper);border-color:rgba(245,243,239,.3)}
+.dark .tlink:hover{color:var(--lav);border-color:var(--lav)}
+
+.tag{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 12px;border-radius:999px;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);color:var(--ink-2);white-space:nowrap}
+.tag-demo{border-style:dashed}
+.tag-demo::before{content:"";width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor}
+.tag-com{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tag-com::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lav)}
+.dark .tag{border-color:rgba(245,243,239,.28);color:#D7DAE0}
+
+.ph{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border:1px dashed var(--blue);border-radius:6px;font:500 12px/1.4 var(--mono);color:var(--blue);background:rgba(55,76,255,.06);letter-spacing:.02em}
+.dark .ph{border-color:var(--lav);color:var(--lav);background:rgba(184,199,255,.08)}
+
+/* ---------- signature & monogram ---------- */
+.sig{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);line-height:1}
+.sig:hover{color:var(--ink)}
+.dark .sig,.dark .sig:hover{color:var(--paper)}
+.sig-name{display:inline-flex;align-items:baseline;gap:.28em;font-size:19px;letter-spacing:-.02em}
+.sig-a{font-family:var(--sans);font-weight:550}
+.sig-b{font-family:var(--serif);font-style:italic;font-size:1.22em;letter-spacing:-.01em}
+.sig-dot{width:.3em;height:.3em;border-radius:50%;background:var(--blue);align-self:center;margin-left:-.12em;transform:translateY(.18em)}
+.mono-mark{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--ink);color:var(--paper);flex:none;overflow:hidden}
+.mono-mark .mb{font:650 17px/1 var(--sans);letter-spacing:-.04em;transform:translate(-3px,-1px)}
+.mono-mark .mc{position:absolute;font:italic 22px/1 var(--serif);color:var(--lav);right:6px;bottom:5px}
+.mono-mark .md{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--blue);right:5px;top:5px}
+.dark .mono-mark{background:var(--paper);color:var(--ink)}
+.dark .mono-mark .mc{color:var(--blue)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(245,243,239,.92);border-bottom:1px solid var(--line)}
+@supports (animation-timeline: scroll()){
+  .hdr{background:rgba(245,243,239,0);border-bottom-color:transparent;animation:hdrBg linear both;animation-timeline:scroll();animation-range:0 160px}
+}
+@keyframes hdrBg{to{background:rgba(245,243,239,.86);border-bottom-color:rgba(24,27,32,.09);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{position:relative;display:inline-flex;align-items:center;height:44px;padding:0 14px;font:450 15px/1 var(--sans);color:var(--ink-2);text-decoration:none;border-radius:999px;transition:color .2s,background-color .2s}
+.nav a:hover{color:var(--ink);background:rgba(24,27,32,.05)}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:6px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--blue)}
+.hdr-cta{min-height:44px;padding:0 18px;font-size:14px}
+.burger{display:none;width:48px;height:48px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink);cursor:pointer;position:relative}
+.burger span{position:absolute;left:15px;right:15px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .2s}
+.burger span:nth-child(1){top:19px}.burger span:nth-child(2){top:27px}
+.burger.on span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger.on span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+.mmenu{position:fixed;inset:76px 0 0 0;z-index:49;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between;padding:28px clamp(20px,4.2vw,56px) 32px;animation:mmIn .35s var(--ease) both;overflow-y:auto}
+@keyframes mmIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mmenu nav{display:flex;flex-direction:column}
+.mmenu nav a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font:400 42px/1.05 var(--serif);text-decoration:none;color:var(--ink);letter-spacing:-.01em}
+.mmenu nav a span{font:500 12px/1 var(--mono);color:var(--muted)}
+.mmenu nav a[aria-current="page"]{color:var(--blue)}
+.mmenu-ft{display:flex;flex-direction:column;gap:14px;padding-top:28px}
+.mmenu-ft .btn{width:100%}
+
+/* ---------- progress ---------- */
+.prog{display:none}
+@supports (animation-timeline: scroll()){
+  .prog{display:block;position:fixed;top:0;left:0;right:0;height:2px;background:var(--blue);transform-origin:0 50%;transform:scaleX(0);z-index:60;animation:prog linear both;animation-timeline:scroll(root)}
+}
+@keyframes prog{to{transform:scaleX(1)}}
+
+/* ---------- reveals (scroll-linked, CSS only) ---------- */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+    .rv-2{animation:rv linear both;animation-timeline:view();animation-range:entry 15% entry 95%}
+    .w{animation:wd linear both;animation-timeline:view();animation-range:cover 12% cover 34%}
+    .grow{animation:grow linear both;animation-timeline:view();animation-range:cover 8% cover 34%}
+    .imgpar{animation:imgpar linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  }
+}
+@keyframes rv{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes wd{from{opacity:.14}to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes imgpar{from{transform:translateY(-4%) scale(1.08)}to{transform:translateY(4%) scale(1.08)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(88px,11vw,168px)}
+.sec-hd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:28px;align-items:end;margin-bottom:clamp(44px,5.5vw,80px)}
+.sec-hd .eyebrow{grid-column:1/-1}
+.sec-hd .h2{grid-column:1/span 7}
+.sec-hd .side{grid-column:9/span 4;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+
+/* ---------- footer ---------- */
+.ftr{padding-top:clamp(72px,8vw,120px);padding-bottom:36px;border-top:1px solid var(--d-line)}
+.ftr-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:48px}
+.ftr-brand{grid-column:1/span 5;display:flex;flex-direction:column;gap:22px}
+.ftr-brand .sig-name{font-size:30px}
+.ftr-col{grid-column:span 2;display:flex;flex-direction:column;gap:6px}
+.ftr-col:first-of-type{grid-column:7/span 2}
+.ftr-col h3{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--d-muted);margin-bottom:12px}
+.ftr-col a{display:inline-flex;align-items:center;min-height:36px;font:400 15px/1.3 var(--sans);text-decoration:none;color:#E6E7EA;word-break:break-word}
+.ftr-col a:hover{color:var(--lav)}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:clamp(64px,7vw,104px);padding-top:24px;border-top:1px solid var(--d-line);font:400 13px/1.5 var(--sans);color:var(--d-muted)}
+.ftr-big{font-family:var(--serif);font-size:clamp(64px,13.5vw,220px);line-height:.85;letter-spacing:-.035em;color:rgba(245,243,239,.08);margin-top:clamp(48px,6vw,90px);white-space:nowrap;user-select:none}
+.ftr-big em{color:rgba(184,199,255,.16)}
+
+/* ---------- shared CTA band ---------- */
+.cta-band{position:relative;overflow:hidden}
+.cta-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;align-items:end}
+.cta-grid .h-display{grid-column:1/span 9;font-size:clamp(48px,7.6vw,124px)}
+.cta-grid .cta-side{grid-column:1/span 6;display:flex;flex-direction:column;gap:28px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px}
+.ring{position:absolute;right:clamp(20px,6vw,96px);top:clamp(80px,9vw,140px);width:clamp(140px,15vw,210px);height:clamp(140px,15vw,210px);color:var(--lav)}
+.ring svg{width:100%;height:100%;animation:spin 22s linear infinite}
+.ring text{font:500 10.5px var(--mono);letter-spacing:.24em;text-transform:uppercase;fill:currentColor}
+.ring .core{position:absolute;inset:30%;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff}
+.ring .core .ic{width:26px;height:26px;transform:rotate(-45deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- browser frame ---------- */
+.bw{border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 0 rgba(24,27,32,.04),0 30px 60px -30px rgba(24,27,32,.35);overflow:hidden}
+.bw-bar{display:flex;align-items:center;gap:12px;height:34px;padding:0 12px;background:#F1EFEA;border-bottom:1px solid var(--line)}
+.bw-dots{display:flex;gap:6px}
+.bw-dots i{width:9px;height:9px;border-radius:50%;background:#D7D4CD;display:block}
+.bw-url{flex:1;max-width:280px;margin:0 auto;height:20px;border-radius:6px;background:#E6E3DD;font:500 10.5px/20px var(--mono);color:#6A6E76;text-align:center;letter-spacing:.02em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 8px}
+.shot{position:relative;overflow:hidden;background:#F9F8F4}
+.shot img{width:100%;height:auto;transform:translateY(0);transition:transform 2.6s cubic-bezier(.45,.05,.25,1)}
+.shot-lbl{position:absolute;left:12px;bottom:12px;font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;background:rgba(24,27,32,.78);color:#fff;padding:7px 9px;border-radius:999px}
+.phone{border-radius:30px;background:var(--ink);padding:7px;box-shadow:0 30px 50px -24px rgba(24,27,32,.55)}
+.phone .shot{border-radius:24px}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .mag{transform:none!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px){
+  .nav a{padding:0 10px}
+}
+@media (max-width: 960px){
+  .nav,.hdr-cta{display:none}
+  .burger{display:inline-block}
+  .sec-hd .h2{grid-column:1/-1}
+  .sec-hd .side{grid-column:1/-1}
+  .ftr-brand{grid-column:1/-1}
+  .ftr-col,.ftr-col:first-of-type{grid-column:span 4}
+  .cta-grid .h-display,.cta-grid .cta-side{grid-column:1/-1}
+  .ring{position:relative;right:auto;top:auto;margin-bottom:36px}
+}
+@media (max-width: 600px){
+  .hdr-in{height:68px}
+  .mmenu{inset:68px 0 0 0}
+  .ftr-col,.ftr-col:first-of-type{grid-column:1/-1}
+  .btn{min-height:52px}
+  .cta-btns .btn{width:100%}
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes winIn{from{opacity:0;translate:0 56px}to{opacity:1;translate:0 0}}
+.ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}.ln>span{display:inline-block;animation:lnIn 1.05s var(--ease) both}.ln:nth-child(2)>span{animation-delay:.12s}@keyframes lnIn{from{transform:translateY(108%)}to{transform:none}}
+.cs-hero :focus-visible{outline-color:#CFE3DB}
+
+.cs-hero{background:#112E2C;color:#F4F1EA;padding-top:clamp(40px,6vw,88px);position:relative;overflow:hidden}
+.cs-hero .eyebrow,.cs-hero .small{color:#AFC3BE}
+.cs-hero a{color:#F4F1EA}
+.crumb{display:flex;gap:10px;align-items:center;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#AFC3BE}
+.crumb a{color:#DCE6E3;text-decoration:none;padding:12px 0}
+.crumb a:hover{color:#fff}
+.cs-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:end}
+.cs-top .crumb{grid-column:1/-1}
+.cs-top h1{grid-column:1/span 8;font-size:clamp(56px,9.6vw,160px)}
+.cs-top h1 em{color:#CFE3DB}
+.cs-top .cs-lead{grid-column:9/span 4;color:#D5DFDC}
+.cs-tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.cs-tags .tag{border-color:rgba(244,241,234,.3);color:#E7EEEC}
+.cs-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(40px,5vw,72px);padding:24px 0;border-top:1px solid rgba(244,241,234,.16)}
+.cs-meta div{display:flex;flex-direction:column;gap:8px}
+.cs-meta .mono{color:#AFC3BE;font-size:11px}
+.cs-meta b{font:400 17px/1.35 var(--sans)}
+.cs-shot-wrap{position:relative;margin-top:clamp(24px,3vw,40px);margin-bottom:calc(-1 * clamp(120px,14vw,220px))}
+.cs-bw .shot{aspect-ratio:1440/900}
+.cs-after{padding-top:calc(clamp(120px,14vw,220px) + clamp(72px,8vw,120px))}
+.crop{position:relative;overflow:hidden;background:#F9F8F4}
+.crop img{width:100%;height:auto}
+.cs-two{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:28px}
+.cs-two .lbl{grid-column:1/span 4;display:flex;flex-direction:column;gap:18px}
+.cs-two .txt{grid-column:6/span 7;display:flex;flex-direction:column;gap:22px}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(40px,5vw,64px)}
+.pillar{border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;background:#FBFAF8;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.pillar:hover{transform:translateY(-4px);box-shadow:0 30px 50px -36px rgba(24,27,32,.4)}
+.pillar .n{font:400 44px/1 var(--serif);color:#1F5A50}
+.cpal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cpal div{height:180px;border-radius:18px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;border:1px solid var(--line)}
+.cpal b{font:500 15px/1.2 var(--sans)}
+.cpal span{font:500 11px/1.3 var(--mono);letter-spacing:.04em}
+.gal{background:#EFEBE3}
+.gal-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.gal-full{grid-column:1/-1}
+.gal-half{grid-column:span 6}
+.gal figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.gal figcaption{display:flex;justify-content:space-between;gap:12px;color:var(--muted)}
+.gal .bw .crop img{transition:transform 2.6s cubic-bezier(.45,.05,.25,1)}
+.phones{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,48px);padding:clamp(32px,5vw,72px);background:#112E2C;border-radius:24px}
+.phones .phone{max-width:300px;width:100%;justify-self:center;background:#0B1F1D}
+.phones .phone:nth-child(2){transform:translateY(40px)}
+.phones .crop{aspect-ratio:390/800;border-radius:24px}
+.phones figcaption{color:#AFC3BE;justify-content:center}
+.dec{counter-reset:d;display:grid;border-top:1px solid var(--line-2)}
+.dec li{display:grid;grid-template-columns:80px repeat(2,minmax(0,1fr));gap:24px;padding:28px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+.dec li::before{counter-increment:d;content:"0" counter(d);font:500 12px/1 var(--mono);color:var(--muted)}
+.dec h3{font:400 30px/1.1 var(--serif);letter-spacing:-.01em}
+.ix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ix div{padding:26px;border-radius:20px;background:rgba(245,243,239,.05);border:1px solid var(--d-line);display:flex;flex-direction:column;gap:12px}
+.tech{display:flex;flex-wrap:wrap;gap:10px}
+.cs-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn-off{border:1px dashed var(--line-2);color:var(--muted);cursor:not-allowed;background:transparent}
+.nextp{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px;align-items:end;padding-top:40px;border-top:1px solid var(--line-2)}
+.nextp .h3{grid-column:1/span 7}
+.nextp .np-side{grid-column:9/span 4;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+@media (max-width: 960px){
+  .cs-top h1,.cs-top .cs-lead{grid-column:1/-1}
+  .cs-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cs-two .lbl,.cs-two .txt{grid-column:1/-1}
+  .pillars{grid-template-columns:1fr}
+  .gal-half{grid-column:1/-1}
+  .phones{grid-template-columns:repeat(3,minmax(0,1fr));padding:20px;gap:12px}
+  .phones .phone{padding:4px;border-radius:20px}
+  .phones .crop{border-radius:16px}
+  .phones .phone:nth-child(2){transform:none}
+  .dec li{grid-template-columns:1fr;gap:10px}
+  .ix{grid-template-columns:1fr}
+  .nextp .h3,.nextp .np-side{grid-column:1/-1}
+}
+@media (max-width: 600px){
+  .phones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .phones figure:nth-child(3){display:none}
+  .cpal{grid-template-columns:1fr}
+  .cpal div{height:110px}
+}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="pg">
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="sig" href="index.html" aria-label="Bernardo Corrêa — página inicial"><span class="mono-mark" aria-hidden="true"><span class="mb">B</span><span class="mc">c</span><span class="md"></span></span><span class="sig-name"><span class="sig-a">Bernardo</span><span class="sig-b">Corrêa</span><span class="sig-dot" aria-hidden="true"></span></span></a>
+    <nav class="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html" aria-current="page">Projetos</a><a href="servicos.html">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav>
+    <a class="btn btn-blue hdr-cta mag" href="contato.html">Vamos conversar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span><span></span></button>
+  </div>
+</header>
+
+  <div class="mmenu" hidden id="menu-mobile">
+    <nav aria-label="Navegação mobile"><a href="index.html">Início<span>01</span></a><a href="projetos.html" aria-current="page">Projetos<span>02</span></a><a href="servicos.html">Serviços<span>03</span></a><a href="sobre.html">Sobre<span>04</span></a><a href="contato.html">Contato<span>05</span></a></nav>
+    <div class="mmenu-ft">
+      <a class="btn btn-blue" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Bernardo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20site."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2L9 9.5z"></path></svg> Conversar pelo WhatsApp</a>
+      <a class="btn btn-line" href="mailto:bernat.correa@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"></path><path d="M4 7l8 6 8-6"></path></svg> bernat.correa@gmail.com</a>
+    </div>
+  </div>
+
+
+<div class="prog" aria-hidden="true"></div>
+<main id="conteudo">
+<section class="cs-hero" aria-labelledby="cs-t">
+  <div class="wrap">
+    <div class="cs-top">
+      <nav class="crumb" aria-label="Você está em"><a href="projetos.html">Projetos</a><span aria-hidden="true">/</span><span>Clínica Horizonte</span></nav>
+      <h1 class="h-display" id="cs-t"><span class="ln"><span>Clínica</span></span><span class="ln"><span><em>Horizonte</em></span></span></h1>
+      <p class="lead cs-lead" style="animation: fadeIn .9s .45s var(--ease) both">Um site institucional para uma clínica odontológica fictícia: atendimento sem pressa, explicado com clareza, do primeiro clique à primeira consulta.</p>
+      <div class="cs-tags" style="animation: fadeIn .9s .55s var(--ease) both"><span class="tag tag-demo">Projeto demonstrativo</span><span class="tag">Empresa fictícia</span></div>
+    </div>
+    <div class="cs-meta" style="animation: fadeIn .9s .65s var(--ease) both">
+      <div><span class="mono">Categoria</span><b>Site institucional</b></div>
+      <div><span class="mono">Segmento</span><b>Odontologia</b></div>
+      <div><span class="mono">Natureza</span><b>Demonstrativo — sem cliente real</b></div>
+      <div><span class="mono">Entrega</span><b>Desktop e celular</b></div>
+    </div>
+    <div class="cs-shot-wrap" style="animation: winIn 1.1s .5s var(--ease) both">
+      <div class="bw cs-bw"><div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">clinica-horizonte · demonstração</span></div><div class="shot"><img src="assets/img/clinica-horizonte-desktop.jpg" alt="Captura da abertura do site da Clínica Horizonte: título “Um sorriso cuidado começa por uma boa conversa” sobre foto de atendimento"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cs-after" aria-labelledby="ctx-t">
+  <div class="wrap">
+    <div class="cs-two">
+      <div class="lbl"><p class="eyebrow">01 — Contexto e objetivo</p><h2 class="h2 rv" id="ctx-t" style="font-size: clamp(36px, 4vw, 60px)">Mostrar o que uma clínica <em>pode ser</em> na internet.</h2></div>
+      <div class="txt rv-2">
+        <p class="lead">Muitas clínicas odontológicas dependem de indicação e de perfis em redes sociais, mas não têm um lugar próprio que explique com calma como funciona o atendimento.</p>
+        <p class="body">A Clínica Horizonte é uma empresa fictícia criada para demonstrar, de ponta a ponta, uma experiência digital profissional para esse segmento: apresentar serviços, explicar a primeira consulta, mostrar o espaço e facilitar o contato — sem prometer resultados nem inventar informações.</p>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar rv"><span class="n">01</span><h3 class="h4">Clareza antes de tudo</h3><p class="body">Serviços, etapas e próximos passos em linguagem simples, para quem chega com dúvidas.</p></div>
+      <div class="pillar rv"><span class="n">02</span><h3 class="h4">Acolhimento visual</h3><p class="body">Tons naturais, fotografia calma e muito respiro, para transmitir um ambiente tranquilo.</p></div>
+      <div class="pillar rv"><span class="n">03</span><h3 class="h4">Contato sempre à mão</h3><p class="body">O agendamento aparece nos momentos certos da leitura, sem pressionar o visitante.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top: 0" aria-labelledby="dv-t">
+  <div class="wrap cs-two">
+    <div class="lbl"><p class="eyebrow">02 — Direção visual</p><h2 class="h3 rv" id="dv-t">Verde profundo, marfim e <em>areia.</em></h2><p class="body">Uma serifa editorial de traço fino nos títulos, com itálico para dar calor, e uma sans neutra para leitura.</p></div>
+    <div class="txt rv-2">
+      <div class="cpal">
+        <div style="background: #112E2C; color: #F4F1EA; border-color: #112E2C"><b>Verde profundo</b><span>#112E2C · Seções de destaque</span></div>
+        <div style="background: #F9F8F4"><b>Marfim</b><span>#F9F8F4 · Base</span></div>
+        <div style="background: #F0EADE"><b>Areia</b><span>#F0EADE · Ritmo entre seções</span></div>
+      </div>
+      <p class="small">Cores amostradas das capturas do site.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec gal" aria-labelledby="gl-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">03 — Galeria</p>
+      <h2 class="h2 rv" id="gl-t">Desktop e <em>celular.</em></h2>
+      <div class="side rv-2"><p class="body">Capturas reais do site demonstrativo. As fotografias usadas nele são ilustrativas e sinalizadas como tal na própria página.</p></div>
+    </div>
+    <div class="gal-grid">
+      <figure class="gal-half rv"><div class="bw"><div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">Serviços</span></div><div class="crop" style="aspect-ratio: 1440/920"><img src="assets/img/clinica-horizonte-desktop.jpg" alt="Captura da seção de serviços: lista de tratamentos sobre fundo verde profundo" style="transform: translateY(-25.6%)"></div></div><figcaption class="mono"><span>Serviços</span><span>Desktop 1440</span></figcaption></figure>
+      <figure class="gal-half rv-2"><div class="bw"><div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">Primeira consulta</span></div><div class="crop" style="aspect-ratio: 1440/920"><img src="assets/img/clinica-horizonte-desktop.jpg" alt="Captura da seção Como funciona a primeira visita, com três etapas numeradas" style="transform: translateY(-50.8%)"></div></div><figcaption class="mono"><span>Como funciona a primeira visita</span><span>Desktop 1440</span></figcaption></figure>
+      <figure class="gal-full rv"><div class="bw"><div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">A clínica</span></div><div class="crop" style="aspect-ratio: 1440/1100"><img src="assets/img/clinica-horizonte-estrutura.jpg" alt="Captura da seção de estrutura: galeria de fotos do consultório" style="transform: translateY(-10.0%)"></div></div><figcaption class="mono"><span>Estrutura e ambiente</span><span>Desktop 1440</span></figcaption></figure>
+      <div class="phones rv">
+        <figure><div class="phone"><div class="crop" style="aspect-ratio: 390/800"><img src="assets/img/clinica-horizonte-mobile.jpg" alt="Captura da abertura do site no celular" style="transform: translateY(-0%)"></div></div><figcaption class="mono">Abertura</figcaption></figure>
+        <figure><div class="phone"><div class="crop" style="aspect-ratio: 390/800"><img src="assets/img/clinica-horizonte-mobile.jpg" alt="Captura dos serviços em acordeão no celular" style="transform: translateY(-22%)"></div></div><figcaption class="mono">Serviços em acordeão</figcaption></figure>
+        <figure><div class="phone"><div class="crop" style="aspect-ratio: 390/800"><img src="assets/img/clinica-horizonte-mobile.jpg" alt="Captura da primeira consulta no celular" style="transform: translateY(-48%)"></div></div><figcaption class="mono">Primeira consulta</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="dc-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">04 — Decisões de design</p>
+      <h2 class="h2 rv" id="dc-t">O que guiou <em>cada escolha.</em></h2>
+    </div>
+    <ol class="dec">
+      <li class="rv"><h3>Honestidade visível</h3><p class="body">Uma faixa no topo avisa que é um projeto demonstrativo, e cada foto leva o selo “imagem ilustrativa”. O visitante nunca é enganado.</p></li>
+      <li class="rv"><h3>Equipe sem rostos inventados</h3><p class="body">A seção de equipe usa espaços reservados para foto, nome, especialidade e registro no CRO — prontos para os dados reais de cada clínica.</p></li>
+      <li class="rv"><h3>Primeira visita em três passos</h3><p class="body">Conversa inicial, avaliação clínica e plano explicado. Saber o que esperar reduz a ansiedade de quem ainda não conhece a clínica.</p></li>
+      <li class="rv"><h3>Ritmo entre claro e escuro</h3><p class="body">Seções em verde profundo intercaladas com marfim e areia criam pausas na leitura e destacam os momentos mais importantes.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="dark sec" aria-labelledby="ix-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">05 — Interações e navegação</p>
+      <h2 class="h2 rv" id="ix-t">Simples de usar, <em class="lav">agradável de explorar.</em></h2>
+    </div>
+    <div class="ix">
+      <div class="rv"><span class="mono" style="color: #A4A9B4">Serviços</span><p class="h4">Lista de tratamentos que se expande no celular, com uma descrição curta e uma imagem de cada etapa.</p></div>
+      <div class="rv-2"><span class="mono" style="color: #A4A9B4">Agendamento</span><p class="h4">Chamadas para agendar avaliação ao longo da página, sempre no mesmo estilo, fáceis de reconhecer.</p></div>
+      <div class="rv"><span class="mono" style="color: #A4A9B4">Celular</span><p class="h4">Layout próprio para telas pequenas, com menu compacto e botões confortáveis para o toque.</p></div>
+      <div class="rv-2"><span class="mono" style="color: #A4A9B4">Leitura</span><p class="h4">Títulos grandes, parágrafos curtos e marcadores de etapa que guiam a rolagem.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="tc-t">
+  <div class="wrap">
+    <div class="cs-two" style="margin-bottom: clamp(64px, 7vw, 112px)">
+      <div class="lbl"><p class="eyebrow">06 — Tecnologia e links</p><h2 class="h3" id="tc-t">Como foi construído.</h2></div>
+      <div class="txt">
+        <div class="tech"><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Imagens em WebP otimizadas</span></div>
+        <div class="cs-links">
+          <span class="btn btn-off" aria-disabled="true">Demonstração ao vivo — em breve</span>
+          <span class="ph">[LINK DA DEMONSTRAÇÃO]</span>
+        </div>
+      </div>
+    </div>
+    <div class="nextp">
+      <p class="h3">Por enquanto, este é o único estudo de caso — o próximo pode ser o <em class="blue">seu.</em></p>
+      <div class="np-side">
+        <a class="tlink" href="projetos.html">Voltar para os projetos <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn btn-blue mag" href="contato.html">Quero um site assim <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="dark cta-band sec" aria-labelledby="cta-t">
+  <div class="ring" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path></defs><text><textPath href="#ringp">Vamos conversar · São Paulo · Projetos sob medida ·</textPath></text></svg>
+    <span class="core"><svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+  </div>
+  <div class="wrap cta-grid">
+    <h2 class="h-display rv" id="cta-t">Quer um site com esse <em class="lav">cuidado?</em></h2>
+    <div class="cta-side rv-2">
+      <p class="lead">Conte um pouco sobre o seu negócio. Eu respondo pessoalmente, com os próximos passos e sem compromisso.</p>
+      <div class="cta-btns">
+        <a class="btn btn-blue mag" href="contato.html">Vamos conversar sobre seu projeto <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn btn-line" href="projetos.html">Ver todos os projetos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="dark ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="ftr-brand">
+        <a class="sig" href="index.html" aria-label="Bernardo Corrêa — página inicial"><span class="mono-mark" aria-hidden="true"><span class="mb">B</span><span class="mc">c</span><span class="md"></span></span><span class="sig-name"><span class="sig-a">Bernardo</span><span class="sig-b">Corrêa</span><span class="sig-dot" aria-hidden="true"></span></span></a>
+        <p class="body" style="max-width: 26em">Desenvolvimento independente de sites e experiências digitais para negócios. São Paulo, Brasil.</p>
+      </div>
+      <div class="ftr-col"><h3>Navegação</h3><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></div>
+      <div class="ftr-col"><h3>Contato</h3><a href="mailto:bernat.correa@gmail.com">bernat.correa@gmail.com</a><a href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Bernardo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">WhatsApp · +55 (11) 99815-0501</a></div>
+      <div class="ftr-col"><h3>Perfis</h3><a href="https://www.linkedin.com/in/bernardo-corr%C3%AAa/">LinkedIn</a><a href="https://github.com/becorrea">GitHub</a></div>
+    </div>
+    <div class="ftr-big" aria-hidden="true">Bernardo <em>Corrêa</em></div>
+    <div class="ftr-bot"><span>© 2026 Bernardo Corrêa. Todos os direitos reservados.</span><span>Feito à mão, em São Paulo.</span></div>
+  </div>
+</footer>
+
+</div>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

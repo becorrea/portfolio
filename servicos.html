@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serviços — Bernardo Corrêa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+:root{
+  --paper:#F5F3EF; --paper-2:#ECE9E3; --paper-3:#E4E1DA;
+  --ink:#181B20; --ink-2:#3F444D; --muted:#5F646E;
+  --line:rgba(24,27,32,.12); --line-2:rgba(24,27,32,.2);
+  --blue:#374CFF; --blue-2:#2335E6; --lav:#B8C7FF; --gray:#DDE0E5;
+  --d-muted:#A4A9B4; --d-line:rgba(245,243,239,.14);
+  --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:var(--ink)} a:hover{color:var(--blue)}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:400}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.dark :focus-visible{outline-color:var(--lav)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:10px;font:500 14px var(--sans);text-decoration:none}
+.skip:focus{top:12px;color:var(--paper)}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.pg{min-height:100vh;overflow-x:clip;animation:pageIn .55s var(--ease) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4.2vw,56px)}
+
+/* ---------- type ---------- */
+.eyebrow{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.dark .eyebrow{color:var(--d-muted)}
+.h-display{font-family:var(--serif);font-size:clamp(50px,8.4vw,136px);line-height:.93;letter-spacing:-.025em}
+.h2{font-family:var(--serif);font-size:clamp(40px,5.4vw,84px);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
+.h3{font-family:var(--serif);font-size:clamp(30px,3vw,44px);line-height:1.02;letter-spacing:-.01em}
+.h4{font:500 19px/1.3 var(--sans);letter-spacing:-.01em}
+em,.it{font-style:italic;font-family:var(--serif)}
+.blue{color:var(--blue)} .dark .lav{color:var(--lav)}
+.lead{font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:var(--ink-2);text-wrap:pretty;max-width:34em}
+.body{font-size:16px;line-height:1.65;color:var(--ink-2);text-wrap:pretty}
+.small{font-size:14px;line-height:1.55;color:var(--muted)}
+.mono{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lead,.dark .body{color:#C9CCD3}
+.dark .small{color:var(--d-muted)}
+.dark a{color:var(--paper)} .dark a:hover{color:var(--lav)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:500 15px/1 var(--sans);letter-spacing:-.005em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,box-shadow .25s;white-space:nowrap}
+.btn .arr{transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-2);color:#fff;box-shadow:0 10px 30px -12px rgba(55,76,255,.7)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#000;color:var(--paper)}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--ink);color:var(--ink)}
+.dark .btn-line{border-color:rgba(245,243,239,.3);color:var(--paper)}
+.dark .btn-line:hover{border-color:var(--paper);color:var(--paper)}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.btn-paper:hover{background:#fff;color:var(--ink)}
+.mag{transform:translate(var(--tx,0px),var(--ty,0px));transition:transform .35s var(--ease),background-color .2s,color .2s,border-color .2s,box-shadow .25s}
+.tlink{display:inline-flex;align-items:center;gap:8px;font:500 15px/1.2 var(--sans);text-decoration:none;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line-2);transition:border-color .2s,color .2s}
+.tlink:hover{border-color:var(--blue);color:var(--blue)}
+.tlink:hover .arr{transform:translateX(3px)}
+.tlink .arr{transition:transform .25s var(--ease)}
+.dark .tlink{color:var(--paper);border-color:rgba(245,243,239,.3)}
+.dark .tlink:hover{color:var(--lav);border-color:var(--lav)}
+
+.tag{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 12px;border-radius:999px;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);color:var(--ink-2);white-space:nowrap}
+.tag-demo{border-style:dashed}
+.tag-demo::before{content:"";width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor}
+.tag-com{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tag-com::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lav)}
+.dark .tag{border-color:rgba(245,243,239,.28);color:#D7DAE0}
+
+.ph{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border:1px dashed var(--blue);border-radius:6px;font:500 12px/1.4 var(--mono);color:var(--blue);background:rgba(55,76,255,.06);letter-spacing:.02em}
+.dark .ph{border-color:var(--lav);color:var(--lav);background:rgba(184,199,255,.08)}
+
+/* ---------- signature & monogram ---------- */
+.sig{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);line-height:1}
+.sig:hover{color:var(--ink)}
+.dark .sig,.dark .sig:hover{color:var(--paper)}
+.sig-name{display:inline-flex;align-items:baseline;gap:.28em;font-size:19px;letter-spacing:-.02em}
+.sig-a{font-family:var(--sans);font-weight:550}
+.sig-b{font-family:var(--serif);font-style:italic;font-size:1.22em;letter-spacing:-.01em}
+.sig-dot{width:.3em;height:.3em;border-radius:50%;background:var(--blue);align-self:center;margin-left:-.12em;transform:translateY(.18em)}
+.mono-mark{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--ink);color:var(--paper);flex:none;overflow:hidden}
+.mono-mark .mb{font:650 17px/1 var(--sans);letter-spacing:-.04em;transform:translate(-3px,-1px)}
+.mono-mark .mc{position:absolute;font:italic 22px/1 var(--serif);color:var(--lav);right:6px;bottom:5px}
+.mono-mark .md{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--blue);right:5px;top:5px}
+.dark .mono-mark{background:var(--paper);color:var(--ink)}
+.dark .mono-mark .mc{color:var(--blue)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(245,243,239,.92);border-bottom:1px solid var(--line)}
+@supports (animation-timeline: scroll()){
+  .hdr{background:rgba(245,243,239,0);border-bottom-color:transparent;animation:hdrBg linear both;animation-timeline:scroll();animation-range:0 160px}
+}
+@keyframes hdrBg{to{background:rgba(245,243,239,.86);border-bottom-color:rgba(24,27,32,.09);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{position:relative;display:inline-flex;align-items:center;height:44px;padding:0 14px;font:450 15px/1 var(--sans);color:var(--ink-2);text-decoration:none;border-radius:999px;transition:color .2s,background-color .2s}
+.nav a:hover{color:var(--ink);background:rgba(24,27,32,.05)}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:6px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--blue)}
+.hdr-cta{min-height:44px;padding:0 18px;font-size:14px}
+.burger{display:none;width:48px;height:48px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink);cursor:pointer;position:relative}
+.burger span{position:absolute;left:15px;right:15px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .2s}
+.burger span:nth-child(1){top:19px}.burger span:nth-child(2){top:27px}
+.burger.on span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger.on span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+.mmenu{position:fixed;inset:76px 0 0 0;z-index:49;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between;padding:28px clamp(20px,4.2vw,56px) 32px;animation:mmIn .35s var(--ease) both;overflow-y:auto}
+@keyframes mmIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mmenu nav{display:flex;flex-direction:column}
+.mmenu nav a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font:400 42px/1.05 var(--serif);text-decoration:none;color:var(--ink);letter-spacing:-.01em}
+.mmenu nav a span{font:500 12px/1 var(--mono);color:var(--muted)}
+.mmenu nav a[aria-current="page"]{color:var(--blue)}
+.mmenu-ft{display:flex;flex-direction:column;gap:14px;padding-top:28px}
+.mmenu-ft .btn{width:100%}
+
+/* ---------- progress ---------- */
+.prog{display:none}
+@supports (animation-timeline: scroll()){
+  .prog{display:block;position:fixed;top:0;left:0;right:0;height:2px;background:var(--blue);transform-origin:0 50%;transform:scaleX(0);z-index:60;animation:prog linear both;animation-timeline:scroll(root)}
+}
+@keyframes prog{to{transform:scaleX(1)}}
+
+/* ---------- reveals (scroll-linked, CSS only) ---------- */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+    .rv-2{animation:rv linear both;animation-timeline:view();animation-range:entry 15% entry 95%}
+    .w{animation:wd linear both;animation-timeline:view();animation-range:cover 12% cover 34%}
+    .grow{animation:grow linear both;animation-timeline:view();animation-range:cover 8% cover 34%}
+    .imgpar{animation:imgpar linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  }
+}
+@keyframes rv{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes wd{from{opacity:.14}to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes imgpar{from{transform:translateY(-4%) scale(1.08)}to{transform:translateY(4%) scale(1.08)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(88px,11vw,168px)}
+.sec-hd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:28px;align-items:end;margin-bottom:clamp(44px,5.5vw,80px)}
+.sec-hd .eyebrow{grid-column:1/-1}
+.sec-hd .h2{grid-column:1/span 7}
+.sec-hd .side{grid-column:9/span 4;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+
+/* ---------- footer ---------- */
+.ftr{padding-top:clamp(72px,8vw,120px);padding-bottom:36px;border-top:1px solid var(--d-line)}
+.ftr-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:48px}
+.ftr-brand{grid-column:1/span 5;display:flex;flex-direction:column;gap:22px}
+.ftr-brand .sig-name{font-size:30px}
+.ftr-col{grid-column:span 2;display:flex;flex-direction:column;gap:6px}
+.ftr-col:first-of-type{grid-column:7/span 2}
+.ftr-col h3{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--d-muted);margin-bottom:12px}
+.ftr-col a{display:inline-flex;align-items:center;min-height:36px;font:400 15px/1.3 var(--sans);text-decoration:none;color:#E6E7EA;word-break:break-word}
+.ftr-col a:hover{color:var(--lav)}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:clamp(64px,7vw,104px);padding-top:24px;border-top:1px solid var(--d-line);font:400 13px/1.5 var(--sans);color:var(--d-muted)}
+.ftr-big{font-family:var(--serif);font-size:clamp(64px,13.5vw,220px);line-height:.85;letter-spacing:-.035em;color:rgba(245,243,239,.08);margin-top:clamp(48px,6vw,90px);white-space:nowrap;user-select:none}
+.ftr-big em{color:rgba(184,199,255,.16)}
+
+/* ---------- shared CTA band ---------- */
+.cta-band{position:relative;overflow:hidden}
+.cta-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;align-items:end}
+.cta-grid .h-display{grid-column:1/span 9;font-size:clamp(48px,7.6vw,124px)}
+.cta-grid .cta-side{grid-column:1/span 6;display:flex;flex-direction:column;gap:28px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px}
+.ring{position:absolute;right:clamp(20px,6vw,96px);top:clamp(80px,9vw,140px);width:clamp(140px,15vw,210px);height:clamp(140px,15vw,210px);color:var(--lav)}
+.ring svg{width:100%;height:100%;animation:spin 22s linear infinite}
+.ring text{font:500 10.5px var(--mono);letter-spacing:.24em;text-transform:uppercase;fill:currentColor}
+.ring .core{position:absolute;inset:30%;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff}
+.ring .core .ic{width:26px;height:26px;transform:rotate(-45deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- browser frame ---------- */
+.bw{border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 0 rgba(24,27,32,.04),0 30px 60px -30px rgba(24,27,32,.35);overflow:hidden}
+.bw-bar{display:flex;align-items:center;gap:12px;height:34px;padding:0 12px;background:#F1EFEA;border-bottom:1px solid var(--line)}
+.bw-dots{display:flex;gap:6px}
+.bw-dots i{width:9px;height:9px;border-radius:50%;background:#D7D4CD;display:block}
+.bw-url{flex:1;max-width:280px;margin:0 auto;height:20px;border-radius:6px;background:#E6E3DD;font:500 10.5px/20px var(--mono);color:#6A6E76;text-align:center;letter-spacing:.02em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 8px}
+.shot{position:relative;overflow:hidden;background:#F9F8F4}
+.shot img{width:100%;height:auto;transform:translateY(0);transition:transform 2.6s cubic-bezier(.45,.05,.25,1)}
+.shot-lbl{position:absolute;left:12px;bottom:12px;font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;background:rgba(24,27,32,.78);color:#fff;padding:7px 9px;border-radius:999px}
+.phone{border-radius:30px;background:var(--ink);padding:7px;box-shadow:0 30px 50px -24px rgba(24,27,32,.55)}
+.phone .shot{border-radius:24px}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .mag{transform:none!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px){
+  .nav a{padding:0 10px}
+}
+@media (max-width: 960px){
+  .nav,.hdr-cta{display:none}
+  .burger{display:inline-block}
+  .sec-hd .h2{grid-column:1/-1}
+  .sec-hd .side{grid-column:1/-1}
+  .ftr-brand{grid-column:1/-1}
+  .ftr-col,.ftr-col:first-of-type{grid-column:span 4}
+  .cta-grid .h-display,.cta-grid .cta-side{grid-column:1/-1}
+  .ring{position:relative;right:auto;top:auto;margin-bottom:36px}
+}
+@media (max-width: 600px){
+  .hdr-in{height:68px}
+  .mmenu{inset:68px 0 0 0}
+  .ftr-col,.ftr-col:first-of-type{grid-column:1/-1}
+  .btn{min-height:52px}
+  .cta-btns .btn{width:100%}
+}
+
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}.ln>span{display:inline-block;animation:lnIn 1.05s var(--ease) both}.ln:nth-child(2)>span{animation-delay:.12s}.ln:nth-child(3)>span{animation-delay:.22s}
+@keyframes lnIn{from{transform:translateY(108%)}to{transform:none}}
+.sv-hero{padding-top:clamp(48px,7vw,104px);padding-bottom:clamp(56px,7vw,96px)}
+.sv-hgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:36px;align-items:end}
+.sv-hgrid .eyebrow{grid-column:1/-1}
+.sv-hgrid h1{grid-column:1/span 10}
+.sv-hgrid .lead{grid-column:1/span 6}
+.jump{grid-column:8/span 5;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;font:450 14px/1 var(--sans);text-decoration:none;color:var(--ink);transition:background-color .2s,border-color .2s,color .2s}
+.jump a:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.sd{border-top:1px solid var(--line-2);padding-block:clamp(56px,7vw,104px)}
+.sd-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;align-items:start}
+.sd-side{grid-column:1/span 4;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.sd-n{font:400 96px/.9 var(--serif);color:var(--blue);letter-spacing:-.03em}
+.sd-side .h2{font-size:clamp(42px,4.6vw,72px)}
+.sd-price{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;background:#DDE4FF;align-self:stretch}
+.sd-price .mono{color:#3A4170;font-size:11px}
+.sd-price b{font:400 40px/1 var(--serif);letter-spacing:-.01em}
+.sd-main{grid-column:6/span 7;display:flex;flex-direction:column}
+.sd-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.sd-row:first-child{padding-top:0}
+.sd-row>.mono{color:var(--muted);padding-top:4px}
+.chk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+.chk li{display:flex;gap:12px;align-items:flex-start;font:400 15.5px/1.45 var(--sans);color:var(--ink-2)}
+.chk li::before{content:"";flex:none;width:14px;height:8px;margin-top:6px;border-left:1.6px solid var(--blue);border-bottom:1.6px solid var(--blue);transform:rotate(-45deg) translate(2px,-1px)}
+.nope li::before{width:12px;height:12px;margin-top:4px;border:0;transform:none;background:linear-gradient(45deg,transparent 45%,var(--muted) 45%,var(--muted) 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--muted) 45%,var(--muted) 55%,transparent 55%)}
+.sd.alt{background:var(--paper-2)}
+.sd.dk{background:var(--ink);color:var(--paper);border-top:0}
+.sd.dk .sd-row{border-color:var(--d-line)}
+.sd.dk .sd-row>.mono{color:var(--d-muted)}
+.sd.dk .chk li{color:#D3D6DC}
+.sd.dk .chk li::before{border-color:var(--lav)}
+.sd.dk .sd-n{color:var(--lav)}
+.cmp-box{overflow-x:auto;border:1px solid var(--line);border-radius:22px;background:#FBFAF8}
+.cmp{width:100%;min-width:640px;border-collapse:collapse;font:400 15px/1.45 var(--sans)}
+.cmp th,.cmp td{text-align:left;padding:18px 24px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font:400 30px/1.1 var(--serif);letter-spacing:-.01em;padding-top:28px;padding-bottom:22px}
+.cmp thead th:first-child{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:bottom}
+.cmp tbody th{font:500 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);width:26%}
+.cmp td{color:var(--ink-2);width:37%}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.cmp .col-hi{background:rgba(184,199,255,.22)}
+.yes{display:inline-flex;align-items:center;gap:8px}
+.yes::before{content:"";width:12px;height:7px;border-left:1.6px solid var(--blue);border-bottom:1.6px solid var(--blue);transform:rotate(-45deg) translateY(-2px)}
+.custom{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px;align-items:center;padding:clamp(28px,4vw,48px);border-radius:24px;background:var(--blue);color:#fff}
+.custom .h3{grid-column:1/span 7;color:#fff}
+.custom .cu-side{grid-column:9/span 4;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.custom p.body{color:#E4E8FF}
+.custom :focus-visible{outline-color:#fff}
+@media (max-width: 960px){
+  .sv-hgrid h1,.sv-hgrid .lead,.jump{grid-column:1/-1}
+  .jump{justify-content:flex-start}
+  .sd-side{grid-column:1/-1;position:static}
+  .sd-main{grid-column:1/-1}
+  .custom .h3,.custom .cu-side{grid-column:1/-1}
+}
+@media (max-width: 600px){
+  .sd-row{grid-template-columns:1fr;gap:12px}
+  .chk{grid-template-columns:1fr}
+  .sd-n{font-size:72px}
+}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="pg">
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="sig" href="index.html" aria-label="Bernardo Corrêa — página inicial"><span class="mono-mark" aria-hidden="true"><span class="mb">B</span><span class="mc">c</span><span class="md"></span></span><span class="sig-name"><span class="sig-a">Bernardo</span><span class="sig-b">Corrêa</span><span class="sig-dot" aria-hidden="true"></span></span></a>
+    <nav class="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html" aria-current="page">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav>
+    <a class="btn btn-blue hdr-cta mag" href="contato.html">Vamos conversar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span><span></span></button>
+  </div>
+</header>
+
+  <div class="mmenu" hidden id="menu-mobile">
+    <nav aria-label="Navegação mobile"><a href="index.html">Início<span>01</span></a><a href="projetos.html">Projetos<span>02</span></a><a href="servicos.html" aria-current="page">Serviços<span>03</span></a><a href="sobre.html">Sobre<span>04</span></a><a href="contato.html">Contato<span>05</span></a></nav>
+    <div class="mmenu-ft">
+      <a class="btn btn-blue" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Bernardo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20site."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2L9 9.5z"></path></svg> Conversar pelo WhatsApp</a>
+      <a class="btn btn-line" href="mailto:bernat.correa@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"></path><path d="M4 7l8 6 8-6"></path></svg> bernat.correa@gmail.com</a>
+    </div>
+  </div>
+
+
+<main id="conteudo">
+<section class="sv-hero" aria-labelledby="sv-t">
+  <div class="wrap sv-hgrid">
+    <p class="eyebrow" style="animation: fadeIn .7s var(--ease) both">Serviços</p>
+    <h1 class="h-display" id="sv-t"><span class="ln"><span>Sites no tamanho</span></span><span class="ln"><span><em class="blue">certo</em> para o</span></span><span class="ln"><span>seu negócio.</span></span></h1>
+    <p class="lead" style="animation: fadeIn .9s .4s var(--ease) both">Sem letras miúdas: aqui está o que cada serviço inclui, para quem ele é indicado e o que fica de fora. Os detalhes finais sempre vão na proposta.</p>
+    <nav class="jump" aria-label="Ir para" style="animation: fadeIn .9s .55s var(--ease) both"><a href="#essencial">Essencial</a><a href="#profissional">Profissional</a><a href="#manutencao">Manutenção</a><a href="#comparacao">Comparação</a></nav>
+  </div>
+</section>
+
+<section class="sd" id="essencial" aria-labelledby="essencial-t">
+  <div class="wrap sd-grid">
+    <div class="sd-side">
+      <span class="sd-n" aria-hidden="true">01</span>
+      <span class="tag">Página única</span>
+      <h2 class="h2" id="essencial-t">Site <em>Essencial</em></h2>
+      <div class="sd-price"><span class="mono">Investimento</span><span>a partir de <b>R$ 600</b></span></div>
+      <a class="btn btn-blue" href="contato.html">Solicitar orçamento <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    </div>
+    <div class="sd-main">
+      <div class="sd-row rv"><span class="mono">O que é</span><p class="lead">Um site institucional de página única, com o essencial para apresentar o seu negócio com profissionalismo.</p></div>
+      <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Clínicas, escritórios e estabelecimentos locais que precisam de uma presença digital clara, confiável e rápida de colocar no ar.</p></div>
+      <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Página única (one-page)</li><li>Até seis seções</li><li>Layout responsivo</li><li>Botão de WhatsApp por link</li><li>Informações comerciais: serviços, endereço e horários</li><li>SEO técnico básico</li><li>Uma rodada de revisão</li><li>Publicação conforme infraestrutura contratada</li></ul></div>
+      <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um endereço próprio, com visual profissional, que apresenta bem o seu negócio para quem pesquisa e leva o visitante direto para uma conversa no WhatsApp.</p></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Sistemas com banco de dados ou área de login</li><li>Integrações com agenda, pagamento ou CRM</li><li>Painel para editar o conteúdo</li><li>Domínio e hospedagem (contratados em seu nome)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sd alt" id="profissional" aria-labelledby="profissional-t">
+  <div class="wrap sd-grid">
+    <div class="sd-side">
+      <span class="sd-n" aria-hidden="true">02</span>
+      <span class="tag">Múltiplas páginas</span>
+      <h2 class="h2" id="profissional-t">Site <em>Profissional</em></h2>
+      
+      <a class="btn btn-ink" href="contato.html">Solicitar orçamento <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    </div>
+    <div class="sd-main">
+      <div class="sd-row rv"><span class="mono">O que é</span><p class="lead">Projetos com mais páginas, estrutura de conteúdo ampliada e uma direção visual mais personalizada.</p></div>
+      <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Empresas que precisam apresentar vários serviços, equipe, conteúdo institucional ou uma identidade visual mais elaborada.</p></div>
+      <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Arquitetura com múltiplas páginas</li><li>Direção visual personalizada</li><li>Interações e animações sob medida</li><li>Layout responsivo pensado para cada tela</li><li>SEO técnico básico</li><li>Revisões definidas na proposta</li></ul></div>
+      <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um site com profundidade para contar a história da empresa, organizar muitos serviços e diferenciar sua marca da concorrência.</p></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Funcionalidades avançadas não descritas na proposta — cada uma é avaliada e orçada à parte</li><li>Domínio e hospedagem (contratados em seu nome)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sd dk" id="manutencao" aria-labelledby="manutencao-t">
+  <div class="wrap sd-grid">
+    <div class="sd-side">
+      <span class="sd-n" aria-hidden="true">03</span>
+      <span class="tag">Contínuo</span>
+      <h2 class="h2" id="manutencao-t">Evolução e <em class="lav">Manutenção</em></h2>
+      
+      <a class="btn btn-paper" href="contato.html">Solicitar orçamento <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    </div>
+    <div class="sd-main">
+      <div class="sd-row rv"><span class="mono">O que é</span><p class="lead">Atualizações, melhorias, correções e acompanhamento técnico depois que o site está no ar.</p></div>
+      <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Quem já tem um site no ar e quer mantê-lo atualizado sem depender de improviso.</p></div>
+      <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Atualização de textos e imagens</li><li>Melhorias e ajustes pontuais</li><li>Correções técnicas</li><li>Acompanhamento conforme escopo contratado</li></ul></div>
+      <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um site que continua refletindo o momento do seu negócio, com alguém de confiança para cuidar dele.</p></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Suporte ilimitado</li><li>Demandas fora do escopo contratado, que são orçadas à parte</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="comparacao" aria-labelledby="cp-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">Comparação</p>
+      <h2 class="h2 rv" id="cp-t">Essencial ou <em>Profissional?</em></h2>
+      <div class="side rv-2"><p class="body">Na dúvida, comece pela conversa: eu indico o formato que faz mais sentido para o momento do seu negócio.</p></div>
+    </div>
+    <div class="cmp-box rv" role="region" aria-label="Tabela comparativa, role horizontalmente no celular" tabindex="0">
+      <table class="cmp">
+        <thead><tr><th scope="col">Item</th><th scope="col" class="col-hi">Essencial</th><th scope="col">Profissional</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Estrutura</th><td class="col-hi">Página única, até seis seções</td><td>Múltiplas páginas, conforme escopo</td></tr>
+          <tr><th scope="row">Visual</th><td class="col-hi">Personalizado para a sua marca</td><td>Direção visual mais aprofundada</td></tr>
+          <tr><th scope="row">Responsivo</th><td class="col-hi"><span class="yes">Incluso</span></td><td><span class="yes">Incluso</span></td></tr>
+          <tr><th scope="row">WhatsApp por link</th><td class="col-hi"><span class="yes">Incluso</span></td><td><span class="yes">Incluso</span></td></tr>
+          <tr><th scope="row">SEO técnico básico</th><td class="col-hi"><span class="yes">Incluso</span></td><td><span class="yes">Incluso</span></td></tr>
+          <tr><th scope="row">Animações sob medida</th><td class="col-hi">Pontuais</td><td><span class="yes">Conforme escopo</span></td></tr>
+          <tr><th scope="row">Revisões</th><td class="col-hi">Uma rodada</td><td>Definidas na proposta</td></tr>
+          <tr><th scope="row">Sistemas e integrações</th><td class="col-hi">Não inclui</td><td>Avaliados caso a caso</td></tr>
+          <tr><th scope="row">Investimento</th><td class="col-hi">A partir de R$ 600</td><td>Sob orçamento</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="custom rv">
+      <p class="h3">Precisa de algo diferente? Vamos montar um <em>orçamento sob medida.</em></p>
+      <div class="cu-side">
+        <p class="body">Conte o que você imagina. Se não for algo que eu possa entregar bem, digo isso com sinceridade.</p>
+        <a class="btn btn-paper mag" href="contato.html">Pedir orçamento personalizado <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="dark cta-band sec" aria-labelledby="cta-t">
+  <div class="ring" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path></defs><text><textPath href="#ringp">Vamos conversar · São Paulo · Projetos sob medida ·</textPath></text></svg>
+    <span class="core"><svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+  </div>
+  <div class="wrap cta-grid">
+    <h2 class="h-display rv" id="cta-t">Vamos encontrar o <em class="lav">formato certo.</em></h2>
+    <div class="cta-side rv-2">
+      <p class="lead">Uma conversa rápida já é suficiente para entender o que o seu negócio precisa.</p>
+      <div class="cta-btns">
+        <a class="btn btn-blue mag" href="contato.html">Vamos conversar sobre seu projeto <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn btn-line" href="clinica-horizonte.html">Ver o projeto Clínica Horizonte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="dark ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="ftr-brand">
+        <a class="sig" href="index.html" aria-label="Bernardo Corrêa — página inicial"><span class="mono-mark" aria-hidden="true"><span class="mb">B</span><span class="mc">c</span><span class="md"></span></span><span class="sig-name"><span class="sig-a">Bernardo</span><span class="sig-b">Corrêa</span><span class="sig-dot" aria-hidden="true"></span></span></a>
+        <p class="body" style="max-width: 26em">Desenvolvimento independente de sites e experiências digitais para negócios. São Paulo, Brasil.</p>
+      </div>
+      <div class="ftr-col"><h3>Navegação</h3><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></div>
+      <div class="ftr-col"><h3>Contato</h3><a href="mailto:bernat.correa@gmail.com">bernat.correa@gmail.com</a><a href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Bernardo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">WhatsApp · +55 (11) 99815-0501</a></div>
+      <div class="ftr-col"><h3>Perfis</h3><a href="https://www.linkedin.com/in/bernardo-corr%C3%AAa/">LinkedIn</a><a href="https://github.com/becorrea">GitHub</a></div>
+    </div>
+    <div class="ftr-big" aria-hidden="true">Bernardo <em>Corrêa</em></div>
+    <div class="ftr-bot"><span>© 2026 Bernardo Corrêa. Todos os direitos reservados.</span><span>Feito à mão, em São Paulo.</span></div>
+  </div>
+</footer>
+
+</div>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
