@@ -33,11 +33,6 @@
 @keyframes under{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .hero-foot{grid-column:1/span 6;grid-row:3;display:flex;flex-direction:column;gap:28px;animation:fadeIn .9s .6s var(--ease) both}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
-.scroll-ind{grid-column:10/span 3;grid-row:3;justify-self:end;align-self:end;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--muted);font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;min-height:44px;animation:fadeIn .9s .9s var(--ease) both}
-.scroll-ind:hover{color:var(--fg)}
-.scroll-ind i{position:relative;width:1px;height:44px;background:var(--line-2);overflow:hidden;display:block}
-.scroll-ind i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--accent);animation:drip 1.8s ease-in-out infinite}
-@keyframes drip{to{top:100%}}
 
 /* composição flutuante (segue o mouse via data-tilt); a Onda fica atrás dela */
 .stage{grid-column:9/span 4;grid-row:2/span 2;position:relative;z-index:1;min-height:600px;align-self:stretch;pointer-events:none}
@@ -252,7 +247,6 @@
   .hero-h{grid-column:1/-1}
   .stage{grid-column:1/-1;grid-row:3;min-height:400px;max-width:560px;width:100%;justify-self:center}
   .hero-foot{grid-column:1/-1;grid-row:4}
-  .scroll-ind{display:none}
   .l1{right:-2%;width:62%;top:0}
   .l2{left:0;width:86%;top:20%}
   .l3{right:0;width:52%;bottom:0}
@@ -382,7 +376,6 @@
         <a class="btn btn-line" href="contato.html">Pedir orçamento</a>
       </div>
     </div>
-    <a class="scroll-ind" href="#manifesto"><span>Role para explorar</span><i></i></a>
   </div>
 </section>
 
