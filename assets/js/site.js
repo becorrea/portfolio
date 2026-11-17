@@ -108,9 +108,9 @@
     let tipo = '';
     const update = () => {
       const n = nome.value.trim(), g = neg.value.trim(), e = mail.value.trim(), z = zap.value.trim(), m = msgEl.value.trim();
-      const lines = ['Olá, Bernardo!' + (n ? ' Meu nome é ' + n + '.' : '')];
+      const lines = ['Olá, Stelqo!' + (n ? ' Meu nome é ' + n + '.' : '')];
       if (g) lines.push('Negócio: ' + g + '.');
-      lines.push(tipo ? 'Tenho interesse em: ' + tipo + '.' : 'Vi seu portfólio e gostaria de conversar sobre um site.');
+      lines.push(tipo ? 'Tenho interesse em: ' + tipo + '.' : 'Vi o site e gostaria de conversar sobre um site.');
       if (m) lines.push('', m);
       if (z || e) lines.push('');
       if (z) lines.push('Meu WhatsApp: ' + z);
