@@ -70,7 +70,9 @@ O site hoje é a marca pessoal "Bernardo Corrêa" (monograma "Bc", Geist, azul #
 Literais rgba que codificam as cores antigas (cabeçalho, sombra do `.btn-blue`, `.ph`, `--line`, `--d-line`, `.ftr-*`, CSS de cada página): trocar pelos RGB novos — `24,27,32`→`11,14,20`; `245,243,239`→`248,245,242`; `55,76,255`→`10,51,255`; `184,199,255`→`142,166,255`. Demais hex soltos do entorno (#FBFAF8, #F1EFEA, #D7D4CD, #E6E3DD, #6A6E76, #C9CCD3, #E6E7EA etc.) → tom mais próximo das escalas do manual (p. 24) ou `#FFFFFF`.
 
 ### Tipografia (manual p. 28–30)
-- Google Fonts: **Plus Jakarta Sans** (400;500;600;700;800), **Instrument Serif** (itálico), **Geist Mono** (400;500). Remover Geist.
+- Google Fonts: **Plus Jakarta Sans** (400;500;600;700;800), **Instrument Serif** (regular + itálico), **Geist Mono** (400;500). *(Decisão do construtor, revisar:)* os mocks não mudam (Não-metas), então:
+  - Instrument Serif regular continua carregada (Lúmen Odonto, opção "Editorial" do Laboratório, mocks da Clínica). Na marca Stelqo ela só é usada em itálico.
+  - **Geist** continua carregada **só em `index.html`**, para a opção "Moderna" do Laboratório. Sai das demais páginas e de toda regra de marca (`--sans`).
 - `--sans: "Plus Jakarta Sans", Arial, Helvetica, sans-serif`.
 - Títulos (`.h-display`, `.h2`, `.h3`, menu mobile, nomes de serviço) em **Jakarta**, nunca em serifa romana:
 
@@ -103,7 +105,11 @@ Literais rgba que codificam as cores antigas (cabeçalho, sombra do `.btn-blue`,
 - Faixas a 23° e Gradiente Profundo: opcionais, a critério do construtor (ex.: CTA band escura). No máximo um gradiente de destaque por tela.
 
 ### Botões e telas
-- Um único botão azul por tela (p. 38). Primeira dobra: CTA do cabeçalho azul; CTA primário do herói vira **ink** (Grafite), como no mockup. Conferir CTA bands e páginas internas com o mesmo critério.
+- Um único botão azul por tela (p. 38). *(Decisão do construtor, revisar:)* o cabeçalho é sticky, então o CTA azul dele conta em toda tela no desktop. Regra:
+  - CTA do cabeçalho permanece azul em todas as páginas, **exceto `contato.html`**, onde ele vira ink e o azul fica com o botão de envio do formulário.
+  - Todos os demais `.btn-blue` de conteúdo (herói, CTA bands, `servicos.html`, `sobre.html`, `projetos.html`) viram **ink** (Grafite), ou claro sobre fundo escuro.
+  - Abaixo de 960px (CTA do cabeçalho escondido) vale o mesmo markup; aceitar que ali nenhum botão azul aparece em algumas telas.
+  - **Botão de envio em `contato.html` mantém a classe `btn-blue`**: `site.js:107` o localiza por `$('.send .btn-blue')`; trocar a classe quebra o envio ao CRM em silêncio.
 - `.btn-blue` hover: `--blue-2`, sombra com `rgba(10,51,255,…)`.
 
 ### Ícones
@@ -121,12 +127,17 @@ Literais rgba que codificam as cores antigas (cabeçalho, sombra do `.btn-blue`,
 - Mensagens pré-preenchidas ("Olá, Bernardo! Vi seu portfólio…") no menu mobile de todas as páginas, no CTA e na prévia do formulário → "Olá, Stelqo! Vi o site e gostaria de conversar sobre um site." Alterar **só strings**; não tocar no fluxo de envio/CRM em `site.js`/`contato.html` (inclui a ocorrência em `site.js:111`).
 - `sobre.html`: placeholder "[ADICIONAR OUTRAS TECNOLOGIAS E HABILIDADES CONFIRMADAS]" — remover a linha (manter só o que está confirmado).
 
+### `clinica-horizonte.html` — fronteira mock × Stelqo *(decisão do construtor, revisar)*
+- **Fica com as cores/fontes da clínica:** o que *mostra* o trabalho entregue: herói `.cs-hero` (fundo #112E2C, destaque menta #CFE3DB), galeria `.gal`, faixa `.phones`, telas e paleta da clínica e `.pillar .n`.
+- **Vira Stelqo:** o que é *narração* da Stelqo: cabeçalho, rodapé, CTA band, rótulos, texto corrido e títulos de seção fora dos blocos acima (incluindo `.dec h3`, que passa para Jakarta). Dentro deles, `em` em título fica azul (#8EA6FF no escuro).
+- Literais rgba antigos (`rgba(24,27,32,…)`, `rgba(245,243,239,…)`) trocados pelos novos em qualquer lugar da página, inclusive nos blocos da clínica, porque são tons neutros da marca antiga, e não cores da clínica.
+
 ### Foto
 - `bernardo-retrato.jpg` permanece (real, luz natural — conforme p. 34).
 
 ## Verificação
 
-- `grep` sem resultados fora dos mocks fictícios: `#374CFF`, `#2335E6`, `#181B20`, `#F5F3EF`, `#B8C7FF`, `rgba(24,27,32`, `rgba(245,243,239`, `rgba(55,76,255`, `rgba(184,199,255`, `family=Geist:`, `"Geist"`, `mono-mark`, `sig-name`, `ftr-big`, `Bernardo Corrêa —` em `<title>`, `identidade.html`.
+- `grep` sem resultados fora dos mocks fictícios: `#374CFF`, `#2335E6`, `#181B20`, `#F5F3EF`, `#B8C7FF`, `rgba(24,27,32`, `rgba(245,243,239`, `rgba(55,76,255`, `rgba(184,199,255`, `family=Geist:` (exceto `index.html`, para o Laboratório), `Geist,` fora do `lab-data`/opção "Moderna", `mono-mark`, `sig-name`, `ftr-big`, `Bernardo Corrêa —` em `<title>`, `identidade.html`.
 - Screenshots desktop (1440px) e mobile (390px) de cada página, comparados com p. 30 e 38 do manual.
 - Contraste: texto em azul sobre escuro usa #8EA6FF.
 - Formulário: prévia e links abrem com o texto novo; envio ao CRM **não** testado com lead real sem autorização.
@@ -141,3 +152,7 @@ Literais rgba que codificam as cores antigas (cabeçalho, sombra do `.btn-blue`,
 ## Em aberto (do usuário, não bloqueia)
 
 - Domínio/e-mail `stelqo.com.br`: quando existir, trocar contatos.
+
+## Pré-requisito de ambiente
+
+- Disco C: com ~0,9 GB livre (estava em 0 durante a revisão). Extrair o kit, renderizar páginas do manual e tirar screenshots exige espaço. Liberar alguns GB antes da implementação.
