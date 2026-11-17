@@ -52,7 +52,6 @@ f.addEventListener('load', () => setTimeout(async () => {
   r.body = cs(d.body).backgroundColor;
   r.overflow = d.documentElement.scrollWidth - d.documentElement.clientWidth;
   const logo = d.querySelector('.hdr .logo img'); r.logo = logo ? logo.currentSrc.split('/').pop() : null;
-  if (!CFG.dark) { document.body.setAttribute('data-res', JSON.stringify(r)); return; }
   // 2. contraste
   const rgba = c => { const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(/[ ,\/]+/).filter(Boolean).map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; };
   const over = (top, bot) => { const a = top[3]; return [0, 1, 2].map(i => top[i] * a + bot[i] * (1 - a)).concat(1); };
@@ -73,6 +72,22 @@ f.addEventListener('load', () => setTimeout(async () => {
       const need = (fs >= 24 || (fs >= 18.66 && fw >= 700)) ? 3 : 4.5, got = ratio(fg, bg);
       if (got < need) out.push(`${got.toFixed(2)}<${need} "${e.textContent.trim().slice(0, 40)}" fg=${s.color} bg=rgb(${bg.slice(0, 3).map(Math.round).join(',')}) ${path(e)}`);
     } return { out, skipped }; };
+  // texto de mock: contraste nos dois modos (o Python acusa só se piorou no escuro)
+  r.mockC = {};
+  for (const e of d.body.querySelectorAll(MOCK + ',' + CFG.mocks.map(s => s + ' *').join(','))) {
+    if (e.closest('svg,template,script,style') || !visible(e)) continue;
+    if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    const bg = bgOf(e); if (!bg) continue;
+    const s = cs(e), fs = parseFloat(s.fontSize), fw = parseInt(s.fontWeight);
+    r.mockC[path(e)] = [ratio(over(rgba(s.color), bg), bg), (fs >= 24 || (fs >= 18.66 && fw >= 700)) ? 3 : 4.5, e.textContent.trim().slice(0, 30)];
+  }
+  // seções vizinhas: fundo efetivo e se há borda separando
+  const bgS = e => { const b = bgOf(e); return b ? b.slice(0, 3).map(Math.round).join(',') : 'img'; };
+  const line = (e, side) => parseFloat(cs(e)['border' + side + 'Width']) > 0 && rgba(cs(e)['border' + side + 'Color'])[3] > 0;
+  r.adj = {};
+  for (const e of d.querySelectorAll('section,footer')) { const n = e.nextElementSibling;
+    if (n && n.matches('section,footer')) r.adj[path(e)] = [bgS(e), bgS(n), line(e, 'Bottom') || line(n, 'Top')]; }
+  if (!CFG.dark) { document.body.setAttribute('data-res', JSON.stringify(r)); return; }
   // contato: chip marcado e campo preenchido (nunca envia; fetch bloqueado no wrapper)
   const chip = d.querySelector('.chip'), nome = d.querySelector('#f-nome');
   if (chip) chip.click();
@@ -183,6 +198,13 @@ def main():
             fails += [f"{tag}: contraste — {x}" for x in dk["contrast"]]
             fails += [f"{tag}: seção .dark — {x}" for x in dk["darkSec"]]
             fails += [f"{tag}: menu móvel — {x}" for x in dk.get("menu", [])]
+            for k, (got, need, txt) in dk["mockC"].items():
+                if got < need and lt["mockC"].get(k, [0, 0])[0] >= need:
+                    fails.append(f"{tag}: contraste no mock — {got:.2f}<{need} \"{txt}\" {k}")
+            for k, (a1, b1, sep) in dk["adj"].items():
+                la = lt["adj"].get(k)
+                if la and la[0] != la[1] and a1 == b1 and not sep:
+                    fails.append(f"{tag}: seções vizinhas sem separação — fundo {a1} {k}")
             mk = set(lt["mock"]) | set(dk["mock"])
             fails += [f"{tag}: mock difere — {x}" for x in
                       diff({k: lt["styles"][k] for k in mk if k in lt["styles"]},

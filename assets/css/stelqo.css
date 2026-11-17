@@ -10,7 +10,7 @@
   --ease:cubic-bezier(.2,.7,.1,1);
 }
 /* Cores por função: claro aqui; o modo escuro troca no fim do arquivo. Mocks (telas de cliente) ficam sempre no claro. */
-:root,.pv,.bw,.phone,.cs-hero,.gal,.phones,.cpal,.stage{
+:root,.pv,.bw,.phone,.cs-hero,.gal,.phones,.cpal,.stage,.pillar{
   --bg:#F8F5F2; --fg:#0B0E14; --fg-2:#3C4150; --muted:#5E6372;
   --surface:#FFFFFF; --surface-2:#ECEAE6; --surface-3:#E4E2DE;
   --accent:#0A33FF; --dark-bg:#0B0E14; --tint:#DDE4FF;
@@ -232,7 +232,7 @@ em{font-style:normal;font-weight:600}
   @keyframes hdrBg{to{background:rgba(11,14,20,.86);border-bottom-color:rgba(248,245,242,.09);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
   .nav a:hover{background:rgba(248,245,242,.06)}
   /* mocks fora de .dark herdavam o texto claro do body; especificidade zero: só vence a herança */
-  :where(.stage,.bw,.phone,.cs-hero,.gal,.phones,.cpal):where(:not(.dark *,.cs-hero *)){color:var(--ink)}
+  :where(.stage,.bw,.phone,.cs-hero,.gal,.phones,.cpal,.pillar):where(:not(.dark *,.cs-hero *)){color:var(--ink)}
   /* botão grafite vira papel, como dentro de .dark */
   .btn-ink,.dark .btn-ink{background:var(--paper);color:var(--ink)}
   .btn-ink:hover,.dark .btn-ink:hover{background:#fff;color:var(--ink)}
