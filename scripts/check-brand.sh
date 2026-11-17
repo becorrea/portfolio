@@ -43,6 +43,13 @@ for p in $PAGES; do
   done
 done
 
+# Modo escuro automático: meta color-scheme, logo negativa no topo, véu do cabeçalho nos dois temas.
+for p in $PAGES; do
+  grep -qF '<meta name="color-scheme" content="light dark">' "$p" || { echo "FAIL: $p sem meta color-scheme"; fail=1; }
+  grep -qF '<source media="(prefers-color-scheme: dark)" srcset="assets/brand/stelqo-horizontal-negativa.svg">' "$p" || { echo "FAIL: $p sem logo negativa no <picture>"; fail=1; }
+done
+[ "$(grep -c '@keyframes hdrBg' assets/css/stelqo.css)" = 2 ] || { echo "FAIL: stelqo.css sem @keyframes hdrBg do escuro"; fail=1; }
+
 grep -qF 'Olá, Bernardo!' assets/js/site.js && { echo "FAIL: 'Olá, Bernardo!' em assets/js/site.js"; fail=1; }
 [ -e identidade.html ] && { echo "FAIL: identidade.html ainda existe"; fail=1; }
 

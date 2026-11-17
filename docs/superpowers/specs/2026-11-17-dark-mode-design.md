@@ -13,7 +13,7 @@ O site segue o modo escuro do aparelho do visitante, com cores tiradas só do ma
 ## Fora do escopo / proibido
 - Botão sol/lua ou escolha salva (pode vir depois, por cima disto).
 - Mudar o modo claro: ele deve ficar pixel-idêntico ao de hoje.
-- Mudar os mocks: Laboratório (`#laboratorio`, `#lab-tpl`, `.pv`) e o trabalho da clínica (`.cs-hero`, `.gal`, `.phones`, telas/paleta da clínica, `.pillar .n`) ficam iguais nos dois modos.
+- Mudar os mocks: conteúdo do Laboratório (`.pv`, `#lab-tpl`; a moldura `#laboratorio` segue as seções `.dark`) e o trabalho da clínica (`.cs-hero`, `.gal`, `.phones`, telas/paleta da clínica, `.pillar .n`) ficam iguais nos dois modos.
 - `filter: invert` ou qualquer inversão automática.
 
 ## Abordagens
