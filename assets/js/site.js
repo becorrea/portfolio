@@ -54,6 +54,13 @@
     });
   }));
 
+  // Planos: chave Mensal/Anual troca preço, período e nota ([data-m] / [data-a]).
+  const bills = $$('.bill button');
+  bills.forEach((b) => b.addEventListener('click', () => {
+    bills.forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    $$('[data-m]').forEach((el) => { el.textContent = el.dataset[b.dataset.p]; });
+  }));
+
   // Lab (index): segment / palette / type pickers re-render the preview
   const tplEl = $('#lab-tpl'), dataEl = $('#lab-data'), pv = $('.lab-pv');
   if (tplEl && dataEl && pv) {
@@ -102,7 +109,7 @@
     // Public (publishable) key: it can only call submit_lead and ping.
     const SUPABASE_URL = 'https://jodaiwlfvlkzrkntiaax.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_UmjmIGdH3JOXCTpJEyKgYQ_WbvmMtnA';
-    const SERVICOS = { 'Site Essencial': 'essencial', 'Site Profissional': 'profissional', 'Evolução e Manutenção': 'manutencao', 'Ainda não sei': 'nao_sei' };
+    const SERVICOS = { 'Site Essencial': 'essencial', 'Site Profissional': 'profissional', 'Planos de cuidado': 'manutencao', 'Ainda não sei': 'nao_sei' };
     const neg = $('#f-neg'), mail = $('#f-mail'), zap = $('#f-wa'), hp = $('#f-site'), msgEl = $('#f-msg'), out = $('.pvm p'), aviso = $('#f-erro');
     const wa = $('.send .btn-blue'), em = $('.send .btn-line'), chips = $$('.chip');
     let tipo = '';

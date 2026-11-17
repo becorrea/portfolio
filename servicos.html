@@ -45,6 +45,8 @@
 .sd.dk .chk li{color:#CFCDC8}
 .sd.dk .chk li::before{border-color:var(--lav)}
 .sd.dk .sd-n{color:var(--lav)}
+.sd.dk .sd-price{background:rgba(142,166,255,.12)}
+.sd.dk .sd-price .mono{color:var(--d-muted)}
 @media (prefers-color-scheme: dark){ .sd.alt + .sd.dk{border-top:1px solid var(--line)} }
 .cmp-box{overflow-x:auto;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
 .cmp{width:100%;min-width:640px;border-collapse:collapse;font:400 15px/1.45 var(--sans)}
@@ -85,14 +87,14 @@
 <header class="hdr">
   <div class="wrap hdr-in">
     <a class="logo" href="index.html" aria-label="Stelqo — página inicial"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/brand/stelqo-horizontal-negativa.svg"><img src="assets/brand/stelqo-horizontal-positiva.svg" alt="Stelqo" width="120" height="34"></picture></a>
-    <nav class="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html" aria-current="page">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav>
+    <nav class="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html" aria-current="page">Serviços</a><a href="planos.html">Planos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav>
     <a class="btn btn-blue hdr-cta mag" href="contato.html">Vamos conversar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
     <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span><span></span></button>
   </div>
 </header>
 
   <div class="mmenu" hidden id="menu-mobile">
-    <nav aria-label="Navegação mobile"><a href="index.html">Início<span>01</span></a><a href="projetos.html">Projetos<span>02</span></a><a href="servicos.html" aria-current="page">Serviços<span>03</span></a><a href="sobre.html">Sobre<span>04</span></a><a href="contato.html">Contato<span>05</span></a></nav>
+    <nav aria-label="Navegação mobile"><a href="index.html">Início<span>01</span></a><a href="projetos.html">Projetos<span>02</span></a><a href="servicos.html" aria-current="page">Serviços<span>03</span></a><a href="planos.html">Planos<span>04</span></a><a href="sobre.html">Sobre<span>05</span></a><a href="contato.html">Contato<span>06</span></a></nav>
     <div class="mmenu-ft">
       <a class="btn btn-blue" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2L9 9.5z"></path></svg> Conversar pelo WhatsApp</a>
       <a class="btn btn-line" href="mailto:bernat.correa@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"></path><path d="M4 7l8 6 8-6"></path></svg> bernat.correa@gmail.com</a>
@@ -106,7 +108,7 @@
     <p class="eyebrow" style="animation: fadeIn .7s var(--ease) both">Serviços</p>
     <h1 class="h-display" id="sv-t"><span class="ln"><span>Sites no tamanho</span></span><span class="ln"><span>certo para o</span></span><span class="ln"><span><em class="blue">seu negócio.</em></span></span></h1>
     <p class="lead" style="animation: fadeIn .9s .4s var(--ease) both">Sem letras miúdas: aqui está o que cada serviço inclui, para quem ele é indicado e o que fica de fora. Os detalhes finais sempre vão na proposta.</p>
-    <nav class="jump" aria-label="Ir para" style="animation: fadeIn .9s .55s var(--ease) both"><a href="#essencial">Essencial</a><a href="#profissional">Profissional</a><a href="#manutencao">Manutenção</a><a href="#comparacao">Comparação</a></nav>
+    <nav class="jump" aria-label="Ir para" style="animation: fadeIn .9s .55s var(--ease) both"><a href="#essencial">Essencial</a><a href="#profissional">Profissional</a><a href="#planos">Planos de cuidado</a><a href="#comparacao">Comparação</a></nav>
   </div>
 </section>
 
@@ -124,7 +126,7 @@
       <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Clínicas, escritórios e estabelecimentos locais que precisam de uma presença digital clara, confiável e rápida de colocar no ar.</p></div>
       <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Tudo em uma página</li><li>Até seis seções</li><li>Funciona bem no celular</li><li>Botão de WhatsApp por link</li><li>Informações comerciais: serviços, endereço e horários</li><li>Ajuda clientes a encontrar você no Google</li><li>Uma rodada de revisão</li><li>Publicação conforme infraestrutura contratada</li></ul></div>
       <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um endereço próprio, com visual profissional, que apresenta bem o seu negócio para quem pesquisa e leva o visitante direto para uma conversa no WhatsApp.</p></div>
-      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Sistemas com banco de dados ou área de login</li><li>Integrações com agenda, pagamento ou sistemas de atendimento</li><li>Painel para editar o conteúdo</li><li>Domínio e hospedagem (contratados em seu nome)</li></ul></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Sistemas com banco de dados ou área de login</li><li>Integrações com agenda, pagamento ou sistemas de atendimento</li><li>Painel para editar o conteúdo</li><li>Hospedagem e gestão técnica: opcionais, nos planos de cuidado</li></ul></div>
     </div>
   </div>
 </section>
@@ -143,26 +145,26 @@
       <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Empresas que precisam apresentar vários serviços, equipe, conteúdo institucional ou uma identidade visual mais elaborada.</p></div>
       <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Arquitetura com múltiplas páginas</li><li>Direção visual personalizada</li><li>Interações e animações sob medida</li><li>Funciona bem no celular, pensado para cada tela</li><li>Ajuda clientes a encontrar você no Google</li><li>Revisões definidas na proposta</li></ul></div>
       <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um site com profundidade para contar a história da empresa, organizar muitos serviços e diferenciar sua marca da concorrência.</p></div>
-      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Funcionalidades avançadas não descritas na proposta — cada uma é avaliada e orçada à parte</li><li>Domínio e hospedagem (contratados em seu nome)</li></ul></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Funcionalidades avançadas não descritas na proposta — cada uma é avaliada e orçada à parte</li><li>Hospedagem e gestão técnica: opcionais, nos planos de cuidado</li></ul></div>
     </div>
   </div>
 </section>
 
-<section class="sd dk dark" id="manutencao" aria-labelledby="manutencao-t">
+<section class="sd dk dark" id="planos" aria-labelledby="planos-t">
   <div class="wrap sd-grid">
     <div class="sd-side">
       <span class="sd-n" aria-hidden="true">03</span>
-      <span class="tag">Contínuo</span>
-      <h2 class="h2" id="manutencao-t">Evolução e <em class="lav">Manutenção</em></h2>
-      
-      <a class="btn btn-paper" href="contato.html">Solicitar orçamento <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+      <span class="tag">Mensal ou anual</span>
+      <h2 class="h2" id="planos-t">Planos de <em class="lav">cuidado</em></h2>
+      <div class="sd-price"><span class="mono">Planos</span><span class="pr-row"><span class="from">a partir de</span><b><small>R$</small>39</b><span class="from">/mês</span></span></div>
+      <a class="btn btn-paper" href="planos.html">Ver planos e valores <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
     </div>
     <div class="sd-main">
-      <div class="sd-row rv"><span class="mono">O que é</span><p class="lead">Atualizações, melhorias, correções e acompanhamento técnico depois que o site está no ar.</p></div>
-      <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Quem já tem um site no ar e quer mantê-lo atualizado sem depender de improviso.</p></div>
-      <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Atualização de textos e imagens</li><li>Melhorias e ajustes pontuais</li><li>Correções técnicas</li><li>Acompanhamento conforme escopo contratado</li></ul></div>
-      <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um site que continua refletindo o momento do seu negócio, com alguém de confiança para cuidar dele.</p></div>
-      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Suporte ilimitado</li><li>Demandas fora do escopo contratado, que são orçadas à parte</li></ul></div>
+      <div class="sd-row rv"><span class="mono">O que é</span><p class="lead">Com o site no ar, a Stelqo cuida da hospedagem, da segurança e das configurações. Você foca no seu negócio.</p></div>
+      <div class="sd-row rv"><span class="mono">Para quem</span><p class="body">Quem não quer se preocupar com hospedagem, domínio e parte técnica, e prefere alguém de confiança cuidando do site.</p></div>
+      <div class="sd-row rv"><span class="mono">Entregas</span><ul class="chk"><li>Hospedagem com certificado de segurança</li><li>Gestão técnica do domínio</li><li>Acompanhamento do funcionamento</li><li>Correções técnicas de hospedagem</li><li>No plano Gestão: renovação do domínio e uma alteração simples por mês</li><li>Sem fidelidade: cancele quando quiser</li></ul></div>
+      <div class="sd-row rv"><span class="mono">O que esperar</span><p class="body">Um site que segue no ar e funcionando, sem você precisar lembrar dele. O domínio continua no nome da sua empresa.</p></div>
+      <div class="sd-row rv"><span class="mono">Não inclui</span><ul class="chk nope"><li>Novas páginas, redesign e novas funcionalidades, orçados à parte</li><li>Atendimento ilimitado</li></ul></div>
     </div>
   </div>
 </section>
@@ -226,7 +228,7 @@
         <a class="ftr-logo" href="index.html" aria-label="Stelqo — página inicial"><img src="assets/brand/stelqo-horizontal-negativa.svg" alt="Stelqo" width="142" height="40"></a>
         <p class="body" style="max-width: 26em">Sites para pequenos negócios. São Paulo, Brasil.</p>
       </div>
-      <div class="ftr-col"><h3>Navegação</h3><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></div>
+      <div class="ftr-col"><h3>Navegação</h3><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="planos.html">Planos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></div>
       <div class="ftr-col"><h3>Contato</h3><a href="mailto:bernat.correa@gmail.com">bernat.correa@gmail.com</a><a href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">WhatsApp · +55 (11) 99815-0501</a></div>
       <div class="ftr-col"><h3>Perfis</h3><a href="https://www.linkedin.com/in/bernardo-corr%C3%AAa/">LinkedIn</a><a href="https://github.com/becorrea">GitHub</a></div>
     </div>

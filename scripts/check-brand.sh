@@ -3,7 +3,7 @@
 # Sai 0 e imprime OK quando nada da identidade antiga sobrou.
 # ponytail: grep de strings, não parser de CSS — pega resto da marca antiga, não valida layout.
 cd "$(dirname "$0")/.." || exit 2
-PAGES="index.html projetos.html servicos.html sobre.html contato.html clinica-horizonte.html"
+PAGES="index.html projetos.html servicos.html planos.html sobre.html contato.html clinica-horizonte.html"
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 fail=0
 
@@ -49,6 +49,13 @@ for p in $PAGES; do
   grep -qF '<source media="(prefers-color-scheme: dark)" srcset="assets/brand/stelqo-horizontal-negativa.svg">' "$p" || { echo "FAIL: $p sem logo negativa no <picture>"; fail=1; }
 done
 [ "$(grep -c '@keyframes hdrBg' assets/css/stelqo.css)" = 2 ] || { echo "FAIL: stelqo.css sem @keyframes hdrBg do escuro"; fail=1; }
+
+# Planos de cuidado no menu (desktop + mobile + rodapé) de toda página; pacote antigo não volta.
+for p in $PAGES; do
+  [ "$(grep -o 'href="planos.html"' "$p" | wc -l)" -ge 3 ] || { echo "FAIL: $p sem planos.html no menu/rodapé"; fail=1; }
+done
+no 'Evolução e Manutenção'
+no 'evolução e manutenção'
 
 grep -qF 'Olá, Bernardo!' assets/js/site.js && { echo "FAIL: 'Olá, Bernardo!' em assets/js/site.js"; fail=1; }
 [ -e identidade.html ] && { echo "FAIL: identidade.html ainda existe"; fail=1; }

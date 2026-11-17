@@ -4,7 +4,7 @@ Uso:
   python -I scripts/theme-check.py snapshot OUT.json [PAGE...]    grava cores computadas do claro
   python -I scripts/theme-check.py light BASELINE.json [PAGE...]  claro tem que ser igual ao baseline
   python -I scripts/theme-check.py dark [--scope SEL] [PAGE...]   regras do modo escuro
-PAGE = index projetos servicos sobre contato clinica-horizonte (sem PAGE = as 6).
+PAGE = index projetos servicos planos sobre contato clinica-horizonte (sem PAGE = as 7).
 Cada página roda num iframe srcdoc com fetch/sendBeacon bloqueados: o formulário nunca chega ao CRM.
 """
 import argparse, html, json, pathlib, re, shutil, subprocess, sys, tempfile
@@ -12,7 +12,7 @@ import argparse, html, json, pathlib, re, shutil, subprocess, sys, tempfile
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-PAGES = ["index", "projetos", "servicos", "sobre", "contato", "clinica-horizonte"]
+PAGES = ["index", "projetos", "servicos", "planos", "sobre", "contato", "clinica-horizonte"]
 SIZES = [(1440, 900), (390, 844)]
 MOCKS = [".pv", ".stage", ".bw", ".phone", ".cs-hero", ".gal", ".phones", ".cpal", ".pillar .n"]
 PROPS = ["color", "background-color", "background-image", "border-top-color", "border-right-color",

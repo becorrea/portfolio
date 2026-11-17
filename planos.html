@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Planos de cuidado — Stelqo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32px.png">
+<link rel="apple-touch-icon" href="assets/brand/favicon-180px-apple-touch.png">
+<link rel="stylesheet" href="assets/css/stelqo.css">
+<style>
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}.ln>span{display:inline-block;animation:lnIn 1.05s var(--ease) both}.ln:nth-child(2)>span{animation-delay:.12s}.ln:nth-child(3)>span{animation-delay:.22s}
+@keyframes lnIn{from{transform:translateY(108%)}to{transform:none}}
+.sv-hero{padding-top:clamp(48px,7vw,104px);padding-bottom:clamp(56px,7vw,96px)}
+.sv-hgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:36px;align-items:end}
+.sv-hgrid .eyebrow{grid-column:1/-1}
+.sv-hgrid h1{grid-column:1/span 10}
+.sv-hgrid .lead{grid-column:1/span 6}
+.badges{grid-column:8/span 5;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.sec.line{border-top:1px solid var(--line-2)}
+.alt{background:var(--surface-2)}
+.chk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+.chk li{display:flex;gap:12px;align-items:flex-start;font:400 15.5px/1.45 var(--sans);color:var(--fg-2)}
+.chk li::before{content:"";flex:none;width:14px;height:8px;margin-top:6px;border-left:1.6px solid var(--accent);border-bottom:1.6px solid var(--accent);transform:rotate(-45deg) translate(2px,-1px)}
+.dark .chk li{color:#CFCDC8}
+.dark .chk li::before{border-color:var(--lav)}
+
+/* chave Mensal / Anual */
+.bill{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid var(--line-2);border-radius:999px}
+.bill button{appearance:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:none;color:var(--fg);font:600 14px/1 var(--sans);cursor:pointer;transition:background-color .2s,color .2s}
+.bill button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.bill .off{white-space:nowrap}
+
+/* cartões de plano */
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.plan{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding:clamp(28px,3.4vw,44px);border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.plan.dark{background:var(--dark-bg);border-color:var(--dark-bg)}
+.plan-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;align-self:stretch}
+.plan-top .mono{color:var(--muted)}
+.dark .plan-top .mono{color:var(--d-muted)}
+.plan .h3{font-size:clamp(34px,3.4vw,44px);letter-spacing:-.03em}
+.plan-price{display:flex;flex-direction:column;gap:10px;align-self:stretch;padding-block:22px;border-block:1px solid var(--line)}
+.dark .plan-price{border-color:var(--d-line)}
+.plan-price .pr-row b{font-size:52px}
+.plan-price .pr-row .from{font-size:14px}
+.plan .chk{grid-template-columns:1fr}
+.plan-note{margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
+.dark .plan-note{border-color:var(--d-line)}
+.terms{margin-top:clamp(32px,4vw,48px);grid-template-columns:repeat(3,minmax(0,1fr))}
+.evo{margin-top:clamp(24px,3vw,32px)}
+
+/* listas numeradas de 3 */
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none}
+.trio li{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--line-2)}
+.trio .n{font:800 44px/1 var(--sans);letter-spacing:-.03em;color:var(--accent)}
+.solo{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:20px;align-items:center;padding:clamp(28px,4vw,48px);border-radius:24px;background:var(--tint)}
+.solo .mono{grid-column:1/-1;color:var(--fg-2)}
+.solo .h3{grid-column:1/span 6}
+.solo .so-side{grid-column:8/span 5;display:flex;flex-direction:column;gap:14px}
+
+/* vantagens */
+.perks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.perk{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:clamp(28px,3.4vw,44px);border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.perk .mono{color:var(--muted)}
+.perk .btn{margin-top:auto}
+.perk-b{background:var(--blue);border-color:var(--blue);color:#fff}
+.perk-b .mono,.perk-b .body{color:var(--gray)}
+.perk-b .h3,.perk-b .h3 em{color:#fff}
+.perk-b :focus-visible{outline-color:#fff}
+
+/* faq (igual à home) */
+.faq-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;align-items:start}
+.faq-hd{grid-column:1/span 4;display:flex;flex-direction:column;align-items:flex-start;gap:26px;position:sticky;top:120px}
+.faq-list{grid-column:6/span 7;border-top:1px solid var(--line-2)}
+.faq-item{border-bottom:1px solid var(--line-2)}
+.faq-item h3{margin:0}
+.faq-q{appearance:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px;padding:20px 0;background:none;border:0;cursor:pointer;color:var(--fg);font:500 clamp(17px,1.5vw,20px)/1.35 var(--sans);letter-spacing:-.01em;text-align:left;transition:color .2s}
+.faq-q:hover{color:var(--accent)}
+.pm{position:relative;flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line-2);transition:background-color .25s,border-color .25s,transform .35s var(--ease)}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:currentColor;transition:transform .35s var(--ease)}
+.pm::after{transform:rotate(90deg)}
+.faq-q[aria-expanded="true"] .pm{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(180deg)}
+.faq-q[aria-expanded="true"] .pm::after{transform:rotate(0deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.faq-a.open{grid-template-rows:1fr}
+.faq-a-in{overflow:hidden;visibility:hidden;transition:visibility 0s .4s}
+.faq-a.open .faq-a-in{visibility:visible;transition-delay:0s}
+.faq-a p{padding:0 64px 26px 0;max-width:40em}
+
+@media (max-width: 960px){
+  .sv-hgrid h1,.sv-hgrid .lead,.badges{grid-column:1/-1}
+  .badges{justify-content:flex-start}
+  .plans,.perks{grid-template-columns:1fr}
+  .terms{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr;gap:32px}
+  .solo .h3,.solo .so-side{grid-column:1/-1}
+  .faq-hd{grid-column:1/-1;position:static}
+  .faq-list{grid-column:1/-1}
+}
+@media (max-width: 600px){
+  .bill{flex-wrap:nowrap}
+  .bill button{padding:0 12px}
+  .plan .btn,.perk .btn{width:100%}
+  .plan-price .pr-row b{font-size:44px}
+  .faq-a p{padding-right:8px}
+}
+@media (prefers-color-scheme: dark){ .plan.dark{border-color:rgba(142,166,255,.5)} }
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="pg">
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="index.html" aria-label="Stelqo — página inicial"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/brand/stelqo-horizontal-negativa.svg"><img src="assets/brand/stelqo-horizontal-positiva.svg" alt="Stelqo" width="120" height="34"></picture></a>
+    <nav class="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="planos.html" aria-current="page">Planos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav>
+    <a class="btn btn-blue hdr-cta mag" href="contato.html">Vamos conversar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span><span></span></button>
+  </div>
+</header>
+
+  <div class="mmenu" hidden id="menu-mobile">
+    <nav aria-label="Navegação mobile"><a href="index.html">Início<span>01</span></a><a href="projetos.html">Projetos<span>02</span></a><a href="servicos.html">Serviços<span>03</span></a><a href="planos.html" aria-current="page">Planos<span>04</span></a><a href="sobre.html">Sobre<span>05</span></a><a href="contato.html">Contato<span>06</span></a></nav>
+    <div class="mmenu-ft">
+      <a class="btn btn-blue" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2L9 9.5z"></path></svg> Conversar pelo WhatsApp</a>
+      <a class="btn btn-line" href="mailto:bernat.correa@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"></path><path d="M4 7l8 6 8-6"></path></svg> bernat.correa@gmail.com</a>
+    </div>
+  </div>
+
+
+<main id="conteudo">
+<section class="sv-hero" aria-labelledby="pl-t">
+  <div class="wrap sv-hgrid">
+    <p class="eyebrow" style="animation: fadeIn .7s var(--ease) both">Planos de cuidado</p>
+    <h1 class="h-display" id="pl-t"><span class="ln"><span>Seu site no ar,</span></span><span class="ln"><span><em class="blue">sem dor de cabeça.</em></span></span></h1>
+    <p class="lead" style="animation: fadeIn .9s .4s var(--ease) both">Com o site pronto, a Stelqo cuida da hospedagem, da segurança e das configurações. Você foca no seu negócio. É opcional, e o domínio continua sendo seu.</p>
+    <ul class="badges" aria-label="Condições" style="animation: fadeIn .9s .55s var(--ease) both"><li class="tag">Opcional</li><li class="tag">Sem fidelidade</li><li class="tag">Domínio no seu nome</li></ul>
+  </div>
+</section>
+
+<section class="sec line" id="valores" aria-labelledby="vl-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">Planos e valores</p>
+      <h2 class="h2 rv" id="vl-t">Dois planos, <em>preço claro.</em></h2>
+      <div class="side rv-2">
+        <div class="bill" role="group" aria-label="Forma de cobrança"><button type="button" aria-pressed="true" data-p="m">Mensal</button><button type="button" aria-pressed="false" data-p="a">Anual <span class="off">2 meses por nossa conta</span></button></div>
+        <p class="small">Valores para um site institucional. Projetos maiores têm plano sob medida.</p>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan rv" aria-labelledby="base-t">
+        <div class="plan-top"><span class="mono">Plano 01</span><span class="tag">Para manter tudo funcionando</span></div>
+        <h3 class="h3" id="base-t">Base</h3>
+        <p class="body">Para quem quer o site no ar, seguro e com alguém responsável por ele, sem precisar pensar nisso.</p>
+        <div class="plan-price" aria-live="polite">
+          <span class="pr-row"><b><small>R$</small><span data-m="39" data-a="390">39</span></b><span class="from" data-m="/mês" data-a="/ano">/mês</span></span>
+          <p class="small" data-m="Pouco mais de R$ 1 por dia." data-a="Equivale a R$ 32,50 por mês: 2 meses por nossa conta.">Pouco mais de R$ 1 por dia.</p>
+        </div>
+        <ul class="chk"><li>Hospedagem do site</li><li>Certificado de segurança (HTTPS)</li><li>Configuração e gestão técnica do domínio</li><li>Acompanhamento do funcionamento</li><li>Correções técnicas de hospedagem e publicação</li></ul>
+        <a class="btn btn-ink" href="contato.html">Quero o plano Base <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <p class="small plan-note">Precisa mudar algo no conteúdo? Ajustes avulsos, com orçamento rápido. A renovação anual do domínio fica por sua conta.</p>
+      </article>
+      <article class="plan dark rv-2" aria-labelledby="gestao-t">
+        <div class="plan-top"><span class="mono">Plano 02</span><span class="tag">Mais completo</span></div>
+        <h3 class="h3" id="gestao-t">Gestão</h3>
+        <p class="body">Para quem quer delegar também a renovação do domínio e as pequenas mudanças do dia a dia.</p>
+        <div class="plan-price" aria-live="polite">
+          <span class="pr-row"><b><small>R$</small><span data-m="89" data-a="890">89</span></b><span class="from" data-m="/mês" data-a="/ano">/mês</span></span>
+          <p class="small" data-m="Menos de R$ 3 por dia." data-a="Equivale a R$ 74,17 por mês: 2 meses por nossa conta.">Menos de R$ 3 por dia.</p>
+        </div>
+        <ul class="chk"><li>Tudo do plano Base</li><li>Renovação anual do domínio .br incluída</li><li>Uma alteração simples por mês: telefone, horário, um texto ou uma foto</li><li>Atendimento prioritário</li></ul>
+        <a class="btn btn-paper" href="contato.html">Quero o plano Gestão <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <p class="small plan-note">Novas páginas, mudanças de layout e novas funcionalidades são orçadas à parte.</p>
+      </article>
+    </div>
+    <ul class="chk terms rv"><li>A cobrança começa só quando o site vai ao ar, nunca antes.</li><li>Sem fidelidade: cancele quando quiser, com o aviso prévio combinado no contrato.</li><li>No anual, se cancelar, a Stelqo devolve os meses não usados, pelo valor mensal.</li></ul>
+    <p class="body evo rv">Quer evoluir o site com novas páginas ou funcionalidades? <a class="tlink" href="contato.html">A Stelqo passa um orçamento sob medida.</a></p>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="dm-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">Seu site, suas regras</p>
+      <h2 class="h2 rv" id="dm-t">O domínio é seu. <em>Sempre.</em></h2>
+      <div class="side rv-2"><p class="body">O plano é uma comodidade, não uma amarra. Você fica porque está bem atendido, não porque não consegue sair.</p></div>
+    </div>
+    <ul class="trio">
+      <li class="rv"><span class="n" aria-hidden="true">01</span><h3 class="h4">No nome da sua empresa</h3><p class="body">O endereço do site é registrado no CNPJ ou CPF do seu negócio. A Stelqo aparece só como contato técnico.</p></li>
+      <li class="rv"><span class="n" aria-hidden="true">02</span><h3 class="h4">A Stelqo cuida da parte técnica</h3><p class="body">Configurações, certificado de segurança e publicação ficam com a Stelqo enquanto o plano estiver ativo.</p></li>
+      <li class="rv"><span class="n" aria-hidden="true">03</span><h3 class="h4">Quer sair? A Stelqo ajuda</h3><p class="body">Se um dia preferir outro fornecedor, você cancela o plano e recebe ajuda na transição dos arquivos e configurações.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="cf-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">Como funciona</p>
+      <h2 class="h2 rv" id="cf-t">Simples do <em>começo ao fim.</em></h2>
+    </div>
+    <ol class="trio">
+      <li class="rv"><span class="n" aria-hidden="true">01</span><h3 class="h4">Você aprova o seu site</h3><p class="body">A Stelqo desenvolve o site, você navega pela prévia e pede os ajustes combinados.</p></li>
+      <li class="rv"><span class="n" aria-hidden="true">02</span><h3 class="h4">Escolhe se quer um plano</h3><p class="body">Base, Gestão ou nenhum dos dois. Mensal ou anual. A decisão é sua, sem pressão.</p></li>
+      <li class="rv"><span class="n" aria-hidden="true">03</span><h3 class="h4">O site vai ao ar</h3><p class="body">A Stelqo configura domínio, segurança e hospedagem. A primeira cobrança acontece só na publicação.</p></li>
+    </ol>
+    <div class="solo rv">
+      <span class="mono">Sem plano</span>
+      <h3 class="h3">Prefere cuidar <em>por conta própria?</em></h3>
+      <div class="so-side">
+        <p class="body">Sem problema. Você recebe o site pronto para publicar na sua própria hospedagem. Se a implantação exigir algo além do combinado, a Stelqo avisa e passa um orçamento antes.</p>
+        <p class="body"><strong>Mudou de ideia depois? É só chamar.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="vt-t">
+  <div class="wrap">
+    <div class="sec-hd">
+      <p class="eyebrow">Vantagens</p>
+      <h2 class="h2 rv" id="vt-t">Bom para você, bom para <em>quem você indica.</em></h2>
+    </div>
+    <div class="perks">
+      <article class="perk perk-b rv">
+        <span class="mono">Indique e ganhe</span>
+        <h3 class="h3">Um mês por <em>nossa conta.</em></h3>
+        <p class="body">Indicou alguém que fechou um site com plano? Você ganha um mês grátis. E quem você indicou começa com o primeiro mês do plano por nossa conta.</p>
+        <a class="btn btn-paper" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Quero%20indicar%20algu%C3%A9m%20para%20um%20site.">Indicar alguém pelo WhatsApp <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+      </article>
+      <article class="perk rv-2">
+        <span class="mono">Condição de lançamento</span>
+        <h3 class="h3">Para os primeiros <em>10 clientes.</em></h3>
+        <p class="body">O valor do plano fica congelado por 12 meses. Em troca, a Stelqo pede autorização para mostrar o seu projeto no portfólio e um depoimento sincero.</p>
+        <a class="btn btn-ink" href="contato.html">Quero participar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" aria-labelledby="fq-t">
+  <div class="wrap faq-grid">
+    <div class="faq-hd">
+      <p class="eyebrow">Dúvidas</p>
+      <h2 class="h2" id="fq-t">Sobre os <em>planos.</em></h2>
+      <p class="body">Ficou alguma dúvida? Pergunte direto: quem responde é quem cuida do seu site.</p>
+      <a class="tlink" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">Perguntar pelo WhatsApp <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-0" aria-expanded="true" aria-controls="faq-a-0"><span>Sou obrigado a contratar um plano?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a open" id="faq-a-0" role="region" aria-labelledby="faq-q-0"><div class="faq-a-in"><p class="body">Não. O plano é opcional. Você pode receber o site pronto e publicar na sua própria hospedagem. Se mudar de ideia depois, é só chamar.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1"><span>Quando a cobrança começa?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1"><div class="faq-a-in"><p class="body">Só quando o site vai ao ar. Enquanto ele está sendo desenvolvido e aprovado, não existe mensalidade.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2"><span>Posso cancelar quando quiser?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2"><div class="faq-a-in"><p class="body">Sim. Não há fidelidade: basta avisar com a antecedência combinada no contrato. No plano anual, a Stelqo devolve os meses não usados, calculados pelo valor mensal.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3"><span>O que conta como alteração simples?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3"><div class="faq-a-in"><p class="body">Trocar telefone, endereço, horário de funcionamento, um texto curto ou uma foto. O plano Gestão inclui uma por mês, que não acumula. Novas seções, páginas ou mudanças de layout são orçadas à parte.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4"><span>Posso trocar de plano?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4"><div class="faq-a-in"><p class="body">Sim, a qualquer momento. A mudança vale a partir do próximo ciclo de cobrança. No anual, o valor já pago é descontado.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5"><span>O domínio fica no nome de quem?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5"><div class="faq-a-in"><p class="body">Sempre no nome da sua empresa, no CNPJ ou CPF do negócio. A Stelqo aparece só como contato técnico enquanto o plano estiver ativo.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6"><span>E se eu quiser levar o site para outro lugar?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6"><div class="faq-a-in"><p class="body">Você cancela o plano e a Stelqo ajuda na transição dos arquivos e configurações combinados no contrato. O domínio já é seu, então não há nada a transferir.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7"><span>Meu site nunca vai sair do ar?</span><span class="pm" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7"><div class="faq-a-in"><p class="body">Nenhuma hospedagem consegue garantir 100% de disponibilidade. A Stelqo garante acompanhar o funcionamento e corrigir os problemas cobertos pelo plano, no prazo combinado em contrato.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="dark cta-band sec" aria-labelledby="cta-t">
+  <div class="ring" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path></defs><text><textPath href="#ringp">Vamos conversar · São Paulo · Sites sob medida ·</textPath></text></svg>
+    <span class="core"><svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+  </div>
+  <div class="wrap cta-grid">
+    <h2 class="h-display rv" id="cta-t">Seu site no ar. Você focado <em class="lav">no seu negócio.</em></h2>
+    <div class="cta-side rv-2">
+      <p class="lead">Conte sobre o seu projeto. A Stelqo explica qual plano faz sentido, inclusive se a melhor opção for nenhum.</p>
+      <div class="cta-btns">
+        <a class="btn btn-paper mag" href="contato.html">Falar sobre o meu site <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn btn-line" href="servicos.html">Ver os serviços</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="dark ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="ftr-brand">
+        <a class="ftr-logo" href="index.html" aria-label="Stelqo — página inicial"><img src="assets/brand/stelqo-horizontal-negativa.svg" alt="Stelqo" width="142" height="40"></a>
+        <p class="body" style="max-width: 26em">Sites para pequenos negócios. São Paulo, Brasil.</p>
+      </div>
+      <div class="ftr-col"><h3>Navegação</h3><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="servicos.html">Serviços</a><a href="planos.html">Planos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></div>
+      <div class="ftr-col"><h3>Contato</h3><a href="mailto:bernat.correa@gmail.com">bernat.correa@gmail.com</a><a href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">WhatsApp · +55 (11) 99815-0501</a></div>
+      <div class="ftr-col"><h3>Perfis</h3><a href="https://www.linkedin.com/in/bernardo-corr%C3%AAa/">LinkedIn</a><a href="https://github.com/becorrea">GitHub</a></div>
+    </div>
+    <div class="ftr-bot"><span>© 2026 Stelqo. Todos os direitos reservados.</span><span>Feito à mão, em São Paulo.</span></div>
+  </div>
+</footer>
+
+</div>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
