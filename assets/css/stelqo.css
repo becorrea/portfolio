@@ -64,8 +64,11 @@ em{font-style:normal;font-weight:600}
 .btn-line:hover{border-color:var(--ink);color:var(--ink)}
 .dark .btn-line{border-color:rgba(248,245,242,.3);color:var(--paper)}
 .dark .btn-line:hover{border-color:var(--paper);color:var(--paper)}
-.btn-paper{background:var(--paper);color:var(--ink)}
-.btn-paper:hover{background:#fff;color:var(--ink)}
+/* .dark a pinta links de --paper; botões sólidos precisam vencer essa regra */
+.btn-paper,.dark .btn-paper{background:var(--paper);color:var(--ink)}
+.btn-paper:hover,.dark .btn-paper:hover{background:#fff;color:var(--ink)}
+.dark .btn-ink,.dark .btn-ink:hover{color:var(--paper)}
+.dark .btn-blue,.dark .btn-blue:hover{color:#fff}
 .mag{transform:translate(var(--tx,0px),var(--ty,0px));transition:transform .35s var(--ease),background-color .2s,color .2s,border-color .2s,box-shadow .25s}
 .tlink{display:inline-flex;align-items:center;gap:8px;font:600 15px/1.2 var(--sans);text-decoration:none;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line-2);transition:border-color .2s,color .2s}
 .tlink:hover{border-color:var(--blue);color:var(--blue)}
@@ -151,6 +154,7 @@ em{font-style:normal;font-weight:600}
 .ftr-brand{grid-column:1/span 5;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
 .ftr-col{grid-column:span 2;display:flex;flex-direction:column;gap:6px}
 .ftr-col:first-of-type{grid-column:7/span 2}
+.ftr-col:nth-child(3){grid-column:span 3} /* e-mail cabe numa linha */
 .ftr-col h3{font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--d-muted);margin-bottom:12px}
 .ftr-col a{display:inline-flex;align-items:center;min-height:36px;font:400 15px/1.3 var(--sans);text-decoration:none;color:#ECEAE6;word-break:break-word}
 .ftr-col a:hover{color:var(--lav)}
@@ -197,14 +201,14 @@ em{font-style:normal;font-weight:600}
   .sec-hd .h2{grid-column:1/-1}
   .sec-hd .side{grid-column:1/-1}
   .ftr-brand{grid-column:1/-1}
-  .ftr-col,.ftr-col:first-of-type{grid-column:span 4}
+  .ftr-col,.ftr-col:first-of-type,.ftr-col:nth-child(3){grid-column:span 4}
   .cta-grid .h-display,.cta-grid .cta-side{grid-column:1/-1}
   .ring{position:relative;right:auto;top:auto;margin-bottom:36px}
 }
 @media (max-width: 600px){
   .hdr-in{height:68px}
   .mmenu{inset:68px 0 0 0}
-  .ftr-col,.ftr-col:first-of-type{grid-column:1/-1}
+  .ftr-col,.ftr-col:first-of-type,.ftr-col:nth-child(3){grid-column:1/-1}
   .btn{min-height:52px}
   .cta-btns .btn{width:100%}
 }
