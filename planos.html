@@ -67,6 +67,11 @@
 .perk{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:clamp(28px,3.4vw,44px);border:1px solid var(--line);border-radius:24px;background:var(--surface)}
 .perk .mono{color:var(--muted)}
 .perk .btn{margin-top:auto}
+.perk .h3{font-size:clamp(28px,3vw,36px)}
+.perk .h3 em{font-size:1.2em}
+.perk .svc-price{display:flex;flex-direction:column;gap:10px}
+.perk .pr-row b{font-size:52px}
+.perk .chk{grid-template-columns:1fr}
 .perk-b{background:var(--blue);border-color:var(--blue);color:#fff}
 .perk-b .mono,.perk-b .body{color:var(--gray)}
 .perk-b .h3,.perk-b .h3 em{color:#fff}
@@ -238,7 +243,8 @@
       <article class="perk rv-2">
         <span class="mono">Condição de lançamento</span>
         <h3 class="h3">Para os primeiros <em>10 clientes.</em></h3>
-        <p class="body">No primeiro ano, o plano Gestão sai pelo preço do Base: R$ 39 por mês, em vez de R$ 89. Vale para quem contrata site e plano. Em troca, a Stelqo pede autorização para mostrar o projeto no portfólio e um depoimento sincero, seja qual for a sua opinião.</p>
+        <div class="svc-price"><span class="pr-top"><s>R$ 89</s><span class="off">Gestão pelo preço do Base</span></span><span class="pr-row"><b><small>R$</small>39</b><span class="from">/mês no primeiro ano</span></span></div>
+        <ul class="chk"><li>Para quem contrata site e plano</li><li>Em troca: seu projeto no portfólio e um depoimento sincero</li></ul>
         <a class="btn btn-ink" href="contato.html">Quero participar <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
       </article>
     </div>
