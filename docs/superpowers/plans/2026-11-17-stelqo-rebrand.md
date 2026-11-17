@@ -46,8 +46,8 @@
 
 - [ ] **Step 1:** Extract `C:\Users\berna\Downloads\Stelqo-Kit-de-Arquivos.zip` into `<scratchpad>/kit/` (new directory). Read the text of the 3 SVGs above. Confirm there is no `<script`, `on…=` or external `href`.
 - [ ] **Step 2:** Copy the 3 SVGs (from `kit/svg/`) and the 3 PNGs (from `kit/png/`) into `assets/brand/` under the same names.
-- [ ] **Step 3: Write `scripts/check-brand.sh`.** For each page in scope, take the text with the Lab removed. In `index.html`, blank out the lines from `id="laboratorio"` to the next `</section>`, and from `id="lab-tpl"` to the end of the file. For `clinica-horizonte.html`, whitelist only the clinic's own colours, which are not in the list. Then fail (`grep -nF`) on each of these:
-  `#374CFF #2335E6 #181B20 #F5F3EF #B8C7FF #ECE9E3 #E4E1DA #3F444D #5F646E #A4A9B4 rgba(24,27,32 rgba(245,243,239 rgba(55,76,255 rgba(184,199,255 "Geist", Geist, mono-mark sig-name ftr-big Bernardo Corrêa — font-weight:550 font:450 font:550 font:650 [ADICIONAR identidade.html Vi seu portfólio Vi%20seu%20portf`
+- [ ] **Step 3: Write `scripts/check-brand.sh`.** Files checked: the 6 pages + `assets/css/stelqo.css` (if present). In `index.html`, before grepping, blank out the lines from `id="laboratorio"` to the next `</section>`, and from `id="lab-tpl"` to the end of the file (mocks). Then fail (`grep -nF`) on each of these:
+  `#374CFF #2335E6 #181B20 #F5F3EF #B8C7FF #ECE9E3 #E4E1DA #3F444D #5F646E #A4A9B4 rgba(24,27,32 rgba(245,243,239 rgba(55,76,255 rgba(184,199,255 "Geist", Geist, mono-mark sig-name ftr-big — Bernardo Corrêa Bernardo Corrêa — © 2026 Bernardo font-weight:550 font:450 font:550 font:650 [ADICIONAR identidade.html Vi seu portfólio Vi%20seu%20portf`
   - Exception: `index.html` may contain `family=Geist:` in the `<head>`. The check `family=Geist:` applies only to the other 5 pages.
   - Also check that `assets/js/site.js` does not contain `Olá, Bernardo!`, and that `identidade.html` does not exist.
   - Each page must contain `assets/css/stelqo.css`, `assets/brand/stelqo-horizontal-positiva.svg` and `assets/brand/favicon-32px.png`.
@@ -71,7 +71,7 @@
   - `em,.it`: replace with `em{font-style:normal;font-weight:600}`. Then add `:is(.h-display,.h2,.h3) em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--blue)}` and `.dark :is(.h-display,.h2,.h3) em{color:var(--lav)}`. Scoped to title classes so the mocks are not affected.
   - `.eyebrow`: `700 12px/1 var(--sans)`, `letter-spacing:.16em`, uppercase, `--muted`, `flex-direction:column; align-items:flex-start; gap:10px`. Change `::before` to `::after` with `width:28px;height:2px;background:var(--blue);opacity:1`. On `.dark`: `--d-muted` text, `--lav` line.
   - `.mmenu nav a`: `800 36px/1.07 var(--sans)`, `-.03em`. `.nav a`: weight 500. `.btn`: weight 600. `.ftr-col h3`: same treatment as the eyebrow without the line.
-  - `.ic` `stroke-width:1.75`. Os desenhos atuais (seta, e-mail) já seguem a grade Lucide; WhatsApp não existe no Lucide e fica. Não trocar paths.
+  - `.ic` `stroke-width:1.75`. The current drawings (arrow, mail) already follow the Lucide grid; WhatsApp has no Lucide icon and stays. Do not change paths.
   - Delete the `/* signature & monogram */` block, `.ftr-brand .sig-name` and `.ftr-big*`. Add `.logo{display:inline-flex}` `.logo img{height:34px;width:auto}` `.ftr-logo img{height:40px;width:auto}`.
 - [ ] **Step 3: On each of the 6 pages:**
   - Replace lines 9–227 of the `<style>` with nothing and put `<link rel="stylesheet" href="assets/css/stelqo.css">` before the `<style>`.
@@ -91,7 +91,7 @@
 ### Task 3: One blue button per screen
 
 **Files:**
-- Modify: every `btn-blue` outside the header and the mobile menu. Current lines: `index.html:850`, `projetos.html:611,628`, `servicos.html:333,427`, `sobre.html:314,383`, `contato.html:` CTA band (if any), `clinica-horizonte.html:454,471`. Also the header CTA on `contato.html:304`.
+- Modify: every `btn-blue` outside the header and the mobile menu. Current lines: `index.html:850`, `projetos.html:611,628`, `servicos.html:333,427`, `sobre.html:314,383`, `clinica-horizonte.html:454,471`. Also the header CTA on `contato.html:304`.
 
 **Interfaces:**
 - Consumes: `.btn-ink`, `.btn-paper` (stelqo.css).
