@@ -2,7 +2,7 @@
 :root{
   --paper:#F8F5F2; --paper-2:#ECEAE6; --paper-3:#E4E2DE;
   --ink:#0B0E14; --ink-2:#3C4150;
-  --blue:#0A33FF; --blue-2:#0828D6; --neon:#4D6BFF; --lav:#8EA6FF; --gray:#DDE4FF;
+  --blue:#0A33FF; --blue-2:#0828D6; --lav:#8EA6FF; --gray:#DDE4FF;
   --d-muted:#A6A9B3; --d-line:rgba(248,245,242,.14);
   --serif:"Instrument Serif", Georgia, serif;
   --sans:"Plus Jakarta Sans", Arial, Helvetica, sans-serif;
@@ -13,7 +13,7 @@
 :root,.pv,.bw,.phone,.cs-hero,.gal,.phones,.cpal,.stage,.pillar{
   --bg:#F8F5F2; --fg:#0B0E14; --fg-2:#3C4150; --muted:#5E6372;
   --surface:#FFFFFF; --surface-2:#ECEAE6; --surface-3:#E4E2DE;
-  --accent:#0A33FF; --dark-bg:#0B0E14; --tint:#DDE4FF;
+  --accent:#0A33FF; --dark-bg:#0B0E14; --tint:#DDE4FF; --neon:#0A33FF;
   --line:rgba(11,14,20,.12); --line-2:rgba(11,14,20,.2);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -224,7 +224,7 @@ em{font-style:normal;font-weight:600}
   :root{
     --bg:#0B0E14; --fg:#F8F5F2; --fg-2:#CFCDC8; --muted:#A6A9B3;
     --surface:#1C2029; --surface-2:#1C2029; --surface-3:#3C4150;
-    --accent:#8EA6FF; --dark-bg:#1C2029; --tint:#252C43;
+    --accent:#8EA6FF; --dark-bg:#1C2029; --tint:#252C43; --neon:#4A86FF;
     --line:rgba(248,245,242,.14); --line-2:rgba(248,245,242,.24);
   }
   .hdr{background:rgba(11,14,20,.92)}
