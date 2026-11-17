@@ -25,7 +25,8 @@ no() { # padrão não pode aparecer
 for pat in '#374CFF' '#2335E6' '#181B20' '#F5F3EF' '#B8C7FF' '#ECE9E3' '#E4E1DA' '#3F444D' '#5F646E' '#A4A9B4' \
   'rgba(24,27,32' 'rgba(245,243,239' 'rgba(55,76,255' 'rgba(184,199,255' '"Geist",' 'Geist,' \
   'mono-mark' 'sig-name' 'ftr-big' '— Bernardo Corrêa' 'Bernardo Corrêa —' '© 2026 Bernardo' \
-  'font-weight:550' 'font:450' 'font:550' 'font:650' '[ADICIONAR' 'identidade.html' 'Vi seu portfólio' 'Vi%20seu%20portf'; do
+  'font-weight:550' 'font:450' 'font:550' 'font:650' '[ADICIONAR' 'identidade.html' 'Vi seu portfólio' 'Vi%20seu%20portf' \
+  'background-size:88px 88px' 'Entendo o que você'; do
   no "$pat"
 done
 

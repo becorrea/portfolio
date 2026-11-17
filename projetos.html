@@ -12,7 +12,6 @@
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(40px,5vw,72px);overflow:hidden;--mx:0;--my:0}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:88px 88px;mask-image:radial-gradient(ellipse 70% 60% at 72% 45%,#000 0%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 72% 45%,#000 0%,transparent 75%);opacity:.55;pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:clamp(28px,3.4vw,48px);min-height:min(820px,calc(100vh - 76px))}
 .hero-meta{grid-column:1/-1;grid-row:1;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;animation:fadeIn .8s .05s var(--ease) both}
 .hero-meta .mono{color:var(--muted)}
