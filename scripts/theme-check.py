@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 PAGES = ["index", "projetos", "servicos", "sobre", "contato", "clinica-horizonte"]
 SIZES = [(1440, 900), (390, 844)]
-MOCKS = [".pv", ".bw", ".phone", ".cs-hero", ".gal", ".phones", ".cpal", ".pillar .n"]
+MOCKS = [".pv", ".stage", ".bw", ".phone", ".cs-hero", ".gal", ".phones", ".cpal", ".pillar .n"]
 PROPS = ["color", "background-color", "background-image", "border-top-color", "border-right-color",
          "border-bottom-color", "border-left-color", "outline-color", "box-shadow", "fill", "stroke"]
 DARK_BG = "rgb(28, 32, 41)"
