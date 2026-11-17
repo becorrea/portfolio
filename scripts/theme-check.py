@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 PAGES = ["index", "projetos", "servicos", "planos", "sobre", "contato", "clinica-horizonte"]
 SIZES = [(1440, 900), (390, 844)]
-MOCKS = [".pv", ".stage", ".bw", ".phone", ".cs-hero", ".gal", ".phones", ".cpal", ".pillar .n"]
+MOCKS = [".pv", ".stage", ".lab-stage", ".bw", ".phone", ".cs-hero", ".gal", ".phones", ".cpal", ".pillar .n"]
 PROPS = ["color", "background-color", "background-image", "border-top-color", "border-right-color",
          "border-bottom-color", "border-left-color", "outline-color", "box-shadow", "fill", "stroke"]
 DARK_BG = "rgb(28, 32, 41)"
@@ -53,7 +53,8 @@ f.addEventListener('load', () => setTimeout(async () => {
   r.overflow = d.documentElement.scrollWidth - d.documentElement.clientWidth;
   const logo = d.querySelector('.hdr .logo img'); r.logo = logo ? logo.currentSrc.split('/').pop() : null;
   // 2. contraste
-  const rgba = c => { const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(/[ ,\/]+/).filter(Boolean).map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; };
+  const rgba = c => { const m = c.match(/rgba?\(([^)]+)\)/), s = c.match(/color\(srgb ([^)]+)\)/); if (!m && !s) return null;  // color-mix() computa como color(srgb 0..1)
+    const v = (m || s)[1].split(/[ ,\/]+/).filter(Boolean).map(Number), k = m ? 1 : 255; return [v[0] * k, v[1] * k, v[2] * k, v.length > 3 ? v[3] : 1]; };
   const over = (top, bot) => { const a = top[3]; return [0, 1, 2].map(i => top[i] * a + bot[i] * (1 - a)).concat(1); };
   const lum = c => { const [R, G, B] = c.slice(0, 3).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }); return .2126 * R + .7152 * G + .0722 * B; };
   const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };

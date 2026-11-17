@@ -61,48 +61,6 @@
     $$('[data-m]').forEach((el) => { el.textContent = el.dataset[b.dataset.p]; });
   }));
 
-  // Lab (index): segment / palette / type pickers re-render the preview
-  const tplEl = $('#lab-tpl'), dataEl = $('#lab-data'), pv = $('.lab-pv');
-  if (tplEl && dataEl && pv) {
-    const tpl = tplEl.textContent, data = JSON.parse(dataEl.textContent);
-    const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    const get = (sc, p) => p.split('.').reduce((o, k) => (o == null ? o : o[k]), sc);
-    // Same mini-template as the source: {{ a.b }}, <sc-for list as>, <sc-if value>
-    const render = (t, sc) => {
-      let out = '', i = 0, m;
-      const open = /<sc-(for|if)\b([^>]*)>/g;
-      while ((m = open.exec(t))) {
-        out += t.slice(i, m.index).replace(/\{\{\s*([\w.$]+)\s*\}\}/g, (_, p) => esc(get(sc, p)));
-        const tag = m[1], re = new RegExp(`<sc-${tag}\\b[^>]*>|</sc-${tag}>`, 'g');
-        re.lastIndex = m.index + m[0].length;
-        let depth = 1, c;
-        while (depth && (c = re.exec(t))) depth += c[0][1] === '/' ? -1 : 1;
-        const inner = t.slice(m.index + m[0].length, c.index);
-        const ref = (n) => (m[2].match(new RegExp(`${n}="\\{\\{\\s*([\\w.$]+)\\s*\\}\\}"`)) || [])[1];
-        if (tag === 'for') (get(sc, ref('list')) || []).forEach((it) => { out += render(inner, { ...sc, [m[2].match(/as="(\w+)"/)[1]]: it }); });
-        else if (get(sc, ref('value'))) out += render(inner, sc);
-        i = open.lastIndex = re.lastIndex;
-      }
-      return out + t.slice(i).replace(/\{\{\s*([\w.$]+)\s*\}\}/g, (_, p) => esc(get(sc, p)));
-    };
-    const st = { segs: 0, pals: 0, types: 0 }, flip = { v: false };
-    const rows = { segs: '.seg-btn', pals: '.pal-btn', types: '.ty-btn' };
-    Object.entries(rows).forEach(([key, sel]) => {
-      const btns = $$(sel);
-      st[key] = Math.max(0, btns.findIndex((b) => b.classList.contains('on')));
-      btns.forEach((b, idx) => b.addEventListener('click', () => {
-        st[key] = idx;
-        flip.v = !flip.v;
-        btns.forEach((o, j) => { o.classList.toggle('on', j === idx); o.setAttribute('aria-pressed', String(j === idx)); });
-        const ty = data.types[st.types];
-        pv.innerHTML = render(tpl, {
-          seg: data.segs[st.segs], pal: data.pals[st.pals], ty,
-          hf: ty.ff, hw: ty.w, hls: ty.ls, anim: flip.v ? 'sw-a' : 'sw-b',
-        });
-      }));
-    });
-  }
-
   // Contact form: live message preview + WhatsApp / e-mail links + lead into the CRM
   const nome = $('#f-nome');
   if (nome) {

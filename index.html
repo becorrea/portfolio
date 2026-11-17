@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Stelqo — Sites para pequenos negócios</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32px.png">
 <link rel="apple-touch-icon" href="assets/brand/favicon-180px-apple-touch.png">
@@ -110,66 +110,282 @@
 .pnext{grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;gap:36px;padding:32px;border:1px dashed rgba(11,14,20,.3);border-radius:22px;aspect-ratio:auto;min-height:100%}
 .pnext .h3{font-size:clamp(30px,2.6vw,40px)}
 
-/* ---------- lab ---------- */
+/* ---------- lab: "Veja como ficaria o seu" (prévia montada por assets/js/lab.js) ---------- */
 .lab{position:relative;overflow:hidden}
-.lab-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:start}
-.lab-ctl{grid-column:1/span 4;display:flex;flex-direction:column;gap:28px}
-.ctl{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;min-width:0}
-.ctl legend{padding:0;margin-bottom:12px;color:var(--d-muted)}
-.seg-row{display:grid;gap:8px}
-.seg-btn,.pal-btn,.ty-btn{appearance:none;border:1px solid rgba(248,245,242,.16);background:rgba(248,245,242,.03);color:#E9EAEE;border-radius:14px;cursor:pointer;font:500 15px/1.2 var(--sans);text-align:left;transition:background-color .2s,border-color .2s,color .2s,transform .2s var(--ease)}
-.seg-btn:hover,.pal-btn:hover,.ty-btn:hover{border-color:rgba(248,245,242,.4);background:rgba(248,245,242,.06)}
-.seg-btn:active,.pal-btn:active,.ty-btn:active{transform:scale(.98)}
-.seg-btn{display:flex;align-items:center;gap:14px;min-height:56px;padding:0 18px}
-.seg-n{font:500 11px/1 var(--mono);color:var(--d-muted)}
-.seg-btn.on,.pal-btn.on,.ty-btn.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.seg-btn.on .seg-n{color:var(--blue)}
-.pal-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.pal-btn{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 14px}
-.pal-sw{display:flex}
-.pal-sw i{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(248,245,242,.9);margin-right:-6px;display:block}
-.pal-btn.on .pal-sw i{border-color:#fff;box-shadow:0 0 0 1px rgba(11,14,20,.15)}
-.ty-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.ty-btn{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 14px}
-.ty-aa{font-size:22px;line-height:1}
-.lab-note{padding-top:4px}
-.lab-pv{grid-column:5/span 8;display:flex;flex-direction:column;gap:14px;min-width:0}
-.lab-bw{border-color:rgba(248,245,242,.1);box-shadow:0 50px 90px -40px rgba(0,0,0,.7)}
-.pv{container-type:inline-size;padding:0 clamp(18px,4cqi,40px) clamp(20px,4cqi,36px);transition:background-color .5s var(--ease),color .5s var(--ease)}
-.pv *{transition:background-color .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
-.pv-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px;border-bottom:1px solid}
-.pv-logo{display:flex;align-items:center;gap:9px}
-.pv-logo i{width:18px;height:18px;border-radius:6px 6px 6px 50%;display:block}
-.pv-logo b{font-size:19px;font-weight:500;letter-spacing:-.01em}
-.pv-links{display:flex;gap:22px;font:400 13px/1 var(--sans)}
-.pv-pill{font:500 12px/1 var(--sans);padding:9px 14px;border:1px solid;border-radius:999px}
-.pv-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(16px,3cqi,32px);padding:clamp(22px,5cqi,48px) 0 clamp(18px,3.5cqi,32px);align-items:center}
-.pv-copy{display:flex;flex-direction:column;gap:clamp(10px,1.8cqi,16px)}
-.pv-kick{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.pv-h{font-size:clamp(28px,5.6cqi,54px);line-height:1;margin:0}
-.pv-p{font:400 clamp(13px,1.7cqi,15px)/1.5 var(--sans);max-width:30em}
-.pv-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.pv-btn,.pv-btn2{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font:500 12.5px/1 var(--sans)}
-.pv-btn2{border:1px solid}
-.pv-art{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden}
-.pv-art .s{position:absolute;display:block}
-.pv-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.pv-card{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid;border-radius:14px;font:400 12px/1.4 var(--sans)}
-.pv-card b{font-size:17px;font-weight:500;letter-spacing:-.01em;line-height:1.1}
-.pv-num{font:500 10.5px/1 var(--mono)}
-.sw-a{animation:swA .55s var(--ease) both}.sw-b{animation:swB .55s var(--ease) both}
-.pv-cards .sw-a:nth-child(2),.pv-cards .sw-b:nth-child(2){animation-delay:.06s}
-.pv-cards .sw-a:nth-child(3),.pv-cards .sw-b:nth-child(3){animation-delay:.12s}
-@keyframes swA{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes swB{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.lab-cap{display:flex;align-items:center;gap:10px}
-.lab-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lav)}
-@container (max-width: 560px){
-  .pv-links{display:none}
-  .pv-hero{grid-template-columns:1fr}
-  .pv-art{aspect-ratio:16/9}
-  .pv-cards{grid-template-columns:1fr}
-  .pv-card{flex-direction:row;align-items:baseline;gap:10px;flex-wrap:wrap}
+.lab .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:start}
+.lab .ctl{grid-column:1/span 4;display:flex;flex-direction:column;gap:24px}
+.lab .stage-col{grid-column:5/span 8;min-width:0;display:flex;flex-direction:column;gap:14px}
+.lab fieldset{border:0;margin:0;padding:0;min-width:0}
+.lab legend,.lab .lbl{display:block;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--d-muted);padding:0;margin:0 0 12px}
+.lab .field{display:flex;flex-direction:column}
+.lab .in{position:relative}
+.lab .in input{width:100%;min-height:58px;padding:0 18px 0 50px;border-radius:14px;border:1.5px solid rgba(248,245,242,.2);background:rgba(248,245,242,.04);color:var(--paper);font:600 17px/1 var(--sans);outline:none;transition:background-color .2s,border-color .2s}
+.lab .in input::placeholder{color:rgba(248,245,242,.42);font-weight:500}
+.lab .in input:focus{background:rgba(142,166,255,.1);border-color:var(--lav)}
+.lab .in svg{position:absolute;left:17px;top:50%;width:20px;height:20px;margin-top:-10px;stroke:var(--lav);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lab .hint{margin:10px 0 0;font:400 13.5px/1.45 var(--sans);color:var(--d-muted);min-height:1.45em}
+.lab .hint b{color:var(--paper);font-weight:600}
+.lab .hint.ok::before{content:"✓ ";color:var(--lav);font-weight:700}
+.lab .row{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.lab .opt{appearance:none;border:1px solid rgba(248,245,242,.16);background:rgba(248,245,242,.03);color:#E9EAEE;border-radius:14px;cursor:pointer;font:500 14.5px/1.2 var(--sans);min-height:52px;padding:0 14px;display:flex;align-items:center;gap:10px;text-align:left;transition:background-color .2s,border-color .2s,color .2s,transform .2s var(--ease)}
+.lab .opt:hover{border-color:rgba(248,245,242,.4);background:rgba(248,245,242,.06)}
+.lab .opt:active{transform:scale(.97)}
+.lab .opt[aria-pressed="true"]{background:var(--paper);color:var(--dark-bg);border-color:var(--paper)}
+.lab .opt:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
+.lab .opt svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lab .goal .opt{min-height:56px}
+.lab .sw{display:flex}
+.lab .sw i{width:18px;height:18px;border-radius:50%;border:2px solid var(--dark-bg);margin-left:-6px}
+.lab .sw i:first-child{margin-left:0}
+.lab .opt[aria-pressed="true"] .sw i{border-color:#fff}
+.lab .aa{font-size:20px;line-height:1}
+.lab .note{margin:0;font:400 13px/1.5 var(--sans);color:var(--d-muted);border-top:1px solid var(--d-line);padding-top:16px}
+.lab .cap{margin:0;display:flex;align-items:center;gap:10px;font:400 13.5px/1.4 var(--sans);color:var(--d-muted)}
+.lab .cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lav);flex:none}
+.lab .lab-stage{position:relative;width:100%;height:calc(var(--ch) * var(--k));--k:.6;--ch:690px}
+.lab .canvas{position:absolute;left:var(--cx,0px);top:0;width:1152px;height:690px;transform:scale(var(--k));transform-origin:0 0}
+.lab .lap{position:absolute;left:0;top:0;width:940px;height:590px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(248,245,242,.12);box-shadow:0 60px 100px -40px rgba(0,0,0,.8)}
+.lab .bar{height:34px;display:flex;align-items:center;gap:12px;padding:0 14px;background:#ECEAE6;border-bottom:1px solid rgba(11,14,20,.1)}
+.lab .dots{display:flex;gap:6px}
+.lab .dots i{width:10px;height:10px;border-radius:50%;background:#CFCCC6}
+.lab .url{margin:0 auto;transform:translateX(-30px);min-width:300px;text-align:center;font:500 12px/22px var(--mono);color:#5E6372;background:#F8F5F2;border-radius:6px;padding:0 14px}
+.lab .url b{color:#0B0E14;font-weight:500}
+.lab .phn{position:absolute;left:890px;top:140px;width:262px;height:540px;border-radius:44px;background:#0B0E14;padding:9px;box-shadow:0 50px 80px -30px rgba(0,0,0,.85),0 0 0 1px rgba(248,245,242,.16)}
+.lab .ph-in{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden}
+.lab .notch{position:absolute;top:8px;left:50%;width:84px;height:24px;margin-left:-42px;border-radius:20px;background:#0B0E14;z-index:5}
+.lab .lab-stage.solo .canvas{width:262px;height:540px}
+.lab .lab-stage.solo .lap{display:none}
+.lab .lab-stage.solo .phn{left:0;top:0}
+.lab .site{--bg:#F2F6F4;--surf:#fff;--ink:#12302C;--mut:#4B5F5B;--acc:#1F6F64;--accInk:#fff;--soft:#D3E6E0;--line:rgba(18,48,44,.14);
+  --hf:"Instrument Serif",Georgia,serif;--hw:400;--hl:-.01em;--hs:1;
+  --deep:color-mix(in srgb,var(--acc) 26%,#0D0F13);
+  --glow:color-mix(in srgb,var(--acc) 22%,#FFE6BF);
+  --sky:color-mix(in srgb,var(--acc) 12%,#F3EEE5);
+  --glass:color-mix(in srgb,var(--acc) 40%,#A8C6D6);
+  --leaf:color-mix(in srgb,var(--acc) 22%,#4F7B57);
+  background:var(--bg);color:var(--ink);font-family:var(--sans);height:100%;position:relative;overflow:hidden;transition:background-color .45s var(--ease),color .45s var(--ease)}
+.lab .site.direto{--hf:"Plus Jakarta Sans",Arial,sans-serif;--hw:700;--hl:-.035em;--hs:.84}
+.lab .site p{margin:0}
+.lab .site .h{font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);text-wrap:balance}
+.lab .lap .site{height:calc(100% - 34px)}
+.lab .fade{height:100%;position:relative;animation:lab-fade .5s var(--ease) both}
+@keyframes lab-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes lab-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .lab .fade{animation:none}
+  .lab .site{transition:none}
+  .lab .caret{animation:none!important}
+}
+.lab .s-nav{display:flex;align-items:center;gap:26px;height:64px;padding:0 36px;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.lab .s-logo{display:flex;align-items:center;gap:10px;font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);font-size:calc(21px * var(--hs));white-space:nowrap;max-width:320px;overflow:hidden;text-overflow:ellipsis}
+.lab .mark{flex:none;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--accInk);display:grid;place-items:center;font:700 13px/1 var(--sans);letter-spacing:0}
+.lab .links{display:flex;gap:22px;margin-left:auto;font-size:13.5px;color:var(--mut)}
+.lab .pill{border:1.5px solid currentColor;border-radius:999px;padding:9px 16px;font:600 13px/1 var(--sans);white-space:nowrap}
+.lab .s-nav.lt{color:#F7F2EA;border-color:rgba(255,255,255,.14)}
+.lab .s-nav.lt .links{color:rgba(247,242,234,.72)}
+.lab .s-nav.lt .mark{background:var(--glow);color:var(--deep)}
+.lab .kick{font:500 13px/1.2 var(--sans);color:var(--acc)}
+.lab .btn1{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font:600 14px/1 var(--sans);padding:14px 22px;white-space:nowrap;background:var(--acc);color:var(--accInk)}
+.lab .card{background:var(--surf);border:1px solid var(--line)}
+.lab .f-surf{fill:var(--surf)}
+.lab .f-bg{fill:var(--bg)}
+.lab .f-acc{fill:var(--acc)}
+.lab .f-soft{fill:var(--soft)}
+.lab .f-ink{fill:var(--ink)}
+.lab .wa{position:absolute;right:16px;bottom:18px;width:50px;height:50px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);z-index:4}
+.lab .wa svg{width:25px;height:25px;fill:#fff}
+.lab .scene{position:absolute;inset:0;width:100%;height:100%}
+.lab .sc-deep{fill:var(--deep)}
+.lab .sc-floor{fill:color-mix(in srgb,var(--deep) 62%,#000)}
+.lab .sc-glow{fill:var(--glow)}
+.lab .sc-acc2{fill:color-mix(in srgb,var(--acc) 70%,#000)}
+.lab .sc-leaf{fill:var(--leaf)}
+.lab .sc-pot{fill:color-mix(in srgb,var(--glow) 55%,#8C6A50)}
+.lab .sc-st{stroke:var(--glow);stroke-width:2;fill:none}
+.lab .sc-ink{stroke:color-mix(in srgb,var(--deep) 40%,#000);stroke-width:5;stroke-linecap:round;fill:none}
+.lab .sc-wall{stroke:rgba(255,255,255,.05);stroke-width:1.5;fill:none}
+.lab .a-hero{position:relative;height:350px;overflow:hidden;color:#F7F2EA}
+.lab .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,7,9,.6) 0%,rgba(6,7,9,.25) 48%,transparent 70%),linear-gradient(0deg,rgba(6,7,9,.45),transparent 45%)}
+.lab .a-copy{position:absolute;left:36px;bottom:66px;max-width:500px;display:flex;flex-direction:column;gap:12px}
+.lab .a-copy .kick{color:var(--glow)}
+.lab .a-copy .h{font-size:calc(58px * var(--hs));line-height:.98}
+.lab .rev{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:6px 13px 6px 10px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);font:500 12.5px/1 var(--sans);color:#F7F2EA}
+.lab .rev .st{color:#F4B740;letter-spacing:1px;font-size:12px}
+.lab .rev b{font-weight:700}
+.lab .sc-ini{font-family:var(--hf);font-weight:700;font-size:20px;fill:var(--deep)}
+.lab .a-book{position:absolute;left:36px;right:200px;top:314px;height:84px;border-radius:18px;display:grid;grid-template-columns:1.25fr 1.15fr 1fr .8fr auto;align-items:stretch;box-shadow:0 30px 50px -30px rgba(0,0,0,.55);z-index:2;overflow:hidden}
+.lab .bk{display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 16px;border-right:1px solid var(--line);min-width:0}
+.lab .bk span{font-size:11.5px;color:var(--mut)}
+.lab .bk b{font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.lab .bk b.t{font-family:var(--mono);font-weight:500;font-size:16px}
+.lab .bk b::after{content:"";width:6px;height:6px;border-right:1.5px solid var(--mut);border-bottom:1.5px solid var(--mut);transform:rotate(45deg) translateY(-3px);margin-left:2px}
+.lab .avs{display:flex}
+.lab .avs i{width:20px;height:20px;border-radius:50%;border:2px solid var(--surf);margin-left:-7px;background:var(--soft)}
+.lab .avs i:first-child{margin-left:0;background:var(--acc)}
+.lab .avs i:nth-child(2){background:color-mix(in srgb,var(--acc) 45%,var(--glow))}
+.lab .bk-go{display:flex;align-items:center;padding:0 22px;background:var(--acc);color:var(--accInk);font:700 15px/1 var(--sans)}
+.lab .a-menu{position:absolute;left:36px;right:120px;top:430px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.lab .mi{display:flex;flex-direction:column;gap:6px}
+.lab .mi div{display:flex;align-items:baseline;gap:8px}
+.lab .mi b{font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);font-size:calc(21px * var(--hs));white-space:nowrap}
+.lab .mi div i{flex:1;border-bottom:1.5px dotted var(--mut);opacity:.5;transform:translateY(-4px)}
+.lab .mi em{font:normal 600 14px/1 var(--sans);color:var(--acc);white-space:nowrap}
+.lab .mi span{font-size:12.5px;color:var(--mut)}
+.lab .q-top{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;padding:34px 120px 0 36px}
+.lab .q-top .kick{display:block;margin-bottom:14px}
+.lab .q-top .h{font-size:calc(54px * var(--hs));line-height:1;max-width:590px}
+.lab .q-stat{text-align:right;padding-bottom:4px}
+.lab .q-stat b{display:block;font-family:var(--hf);font-weight:var(--hw);font-size:calc(92px * var(--hs));line-height:.8;letter-spacing:-.03em;color:var(--acc)}
+.lab .q-stat span{display:block;font-size:12.5px;color:var(--mut);margin-top:10px;line-height:1.35}
+.lab .q-form{margin:30px 120px 0 36px;border-radius:20px;display:grid;grid-template-columns:1.35fr 1fr 1fr 150px;overflow:hidden;box-shadow:0 30px 50px -36px rgba(0,0,0,.4)}
+.lab .qs{padding:18px 18px 20px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px;position:relative}
+.lab .qs .qn{font-family:var(--hf);font-weight:var(--hw);font-size:calc(26px * var(--hs));line-height:1;color:var(--acc)}
+.lab .qs .ql{font-size:14px;font-weight:700;margin-top:-4px}
+.lab .qs.done::after{content:"✓";position:absolute;right:16px;top:18px;width:20px;height:20px;border-radius:50%;background:var(--soft);color:var(--acc);font:700 11px/20px var(--sans);text-align:center}
+.lab .chips{display:flex;flex-wrap:wrap;gap:6px}
+.lab .chips span{border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:12px;white-space:nowrap}
+.lab .chips span.on{background:var(--acc);border-color:var(--acc);color:var(--accInk);font-weight:600}
+.lab .seg{display:flex;flex-direction:column;gap:6px}
+.lab .seg span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut)}
+.lab .seg span::before{content:"";width:14px;height:14px;border-radius:50%;border:1.5px solid var(--line);flex:none}
+.lab .seg span.on{color:var(--ink);font-weight:600}
+.lab .seg span.on::before{border:4.5px solid var(--acc)}
+.lab .fld{border-bottom:1.5px solid var(--ink);padding:8px 0;font:500 14.5px/1 var(--mono);display:flex;align-items:center}
+.lab .caret{width:1.5px;height:16px;background:var(--acc);margin-left:2px;animation:lab-blink 1s steps(1) infinite}
+.lab .fld-n{font-size:11.5px;color:var(--mut)}
+.lab .q-go{background:var(--ink);color:var(--bg);display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:18px}
+.lab .q-go b{font:700 16px/1.2 var(--sans)}
+.lab .q-go span{font-size:11.5px;opacity:.7;line-height:1.35}
+.lab .q-go i{width:34px;height:34px;border-radius:50%;background:var(--acc);display:grid;place-items:center;margin-bottom:auto}
+.lab .q-go i::before{content:"";width:9px;height:9px;border-top:2px solid var(--accInk);border-right:2px solid var(--accInk);transform:translateX(-2px) rotate(45deg)}
+.lab .q-proof{display:flex;align-items:center;gap:28px;margin:26px 120px 0 36px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+.lab .q-proof b{color:var(--ink);font-size:15px}
+.lab .logos{display:flex;gap:26px;align-items:center;color:var(--ink);opacity:.5;white-space:nowrap}
+.lab .logos i{font-style:normal}
+.lab .cart{display:flex;align-items:center;gap:8px;font:600 13px/1 var(--sans);background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 14px 8px 10px}
+.lab .cart i{width:20px;height:20px;border-radius:50%;background:var(--acc);color:var(--accInk);display:grid;place-items:center;font:700 11px/1 var(--sans);font-style:normal}
+.lab .p-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:26px 70px 0 36px}
+.lab .p-head .h{font-size:calc(40px * var(--hs));line-height:1;max-width:430px;margin-top:8px}
+.lab .tabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--soft)}
+.lab .tabs span{padding:8px 14px;border-radius:999px;font-size:12.5px;color:var(--mut);white-space:nowrap}
+.lab .tabs span.on{background:var(--surf);color:var(--ink);font-weight:600;box-shadow:0 2px 8px -3px rgba(0,0,0,.2)}
+.lab .p-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:150px 96px;gap:12px;margin:16px 70px 0 36px}
+.lab .pc{position:relative;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.lab .pc .s-pg{flex:1;display:grid;place-items:center;background:var(--soft);min-height:0}
+.lab .pc .s-pg svg{height:86%;width:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18))}
+.lab .pc .pi{padding:10px 14px 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.lab .pc .pi b{display:block;font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);font-size:calc(19px * var(--hs));line-height:1.1}
+.lab .pc .pi span{display:block;font-size:11.5px;color:var(--mut);margin-top:3px}
+.lab .pc .pi em{font:normal 700 14px/1 var(--sans);white-space:nowrap}
+.lab .pc.big{grid-row:1/3}
+.lab .pc.big .s-pg svg{height:82%}
+.lab .pc.big .pi b{font-size:calc(26px * var(--hs))}
+.lab .pc.wide{grid-column:2/4;flex-direction:row}
+.lab .pc.wide .s-pg{flex:none;width:130px}
+.lab .pc.wide .pi{flex:1;align-items:center}
+.lab .tagx{position:absolute;left:14px;top:14px;background:var(--surf);border-radius:999px;padding:6px 11px;font:600 11.5px/1 var(--sans);z-index:1}
+.lab .add{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--surf);color:var(--ink);display:grid;place-items:center;font:500 20px/1 var(--sans);box-shadow:0 4px 10px -4px rgba(0,0,0,.3)}
+.lab .add.on{background:var(--acc);color:var(--accInk);font-size:13px;font-weight:700}
+.lab .p-bar{position:absolute;left:250px;bottom:16px;display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 8px 8px 18px;font-size:13.5px;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);z-index:3}
+.lab .p-bar b{font-weight:700}
+.lab .p-bar span:last-child{background:#25D366;color:#fff;border-radius:999px;padding:10px 16px;font-weight:700}
+.lab .f{display:grid;grid-template-columns:520px 1fr;gap:30px;padding:22px 60px 0 36px}
+.lab .f-img{position:relative;height:452px;border-radius:20px;overflow:hidden}
+.lab .f-img .ren,.lab .f-img .bp{position:absolute;inset:0}
+.lab .f-img svg{width:100%;height:100%;display:block}
+.lab .bp{clip-path:inset(0 54% 0 0);background-color:var(--deep);background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px}
+.lab .bp svg *{fill:none!important;stroke:rgba(255,255,255,.72)!important;stroke-width:1.2!important}
+.lab .bp .a-sky,.lab .bp .a-sun,.lab .bp .a-hill,.lab .bp .a-tree,.lab .bp .a-refl{display:none}
+.lab .bp text{fill:rgba(255,255,255,.85)!important;stroke:none!important;font:500 12px var(--mono)}
+.lab .dim{display:none}
+.lab .bp .dim{display:inline}
+.lab .a-sky{fill:var(--sky)}
+.lab .a-sun{fill:#F7D9A6}
+.lab .a-hill{fill:color-mix(in srgb,var(--leaf) 35%,var(--sky))}
+.lab .a-tree{fill:var(--leaf)}
+.lab .a-lawn{fill:color-mix(in srgb,var(--leaf) 55%,#CAD8A9)}
+.lab .a-wall{fill:#EFE9E0}
+.lab .a-glass{fill:var(--glass)}
+.lab .a-door{fill:#2C2621}
+.lab .a-wood{fill:#8B5E3C}
+.lab .a-refl{stroke:rgba(255,255,255,.5);stroke-width:3;fill:none}
+.lab .a-slat{stroke:rgba(0,0,0,.2);stroke-width:2}
+.lab .a-shadow{fill:rgba(0,0,0,.2)}
+.lab .a-path{stroke:#DCD2C2;stroke-width:18;fill:none}
+.lab .handle{position:absolute;top:0;bottom:0;left:46%;width:2px;margin-left:-1px;background:#fff;z-index:2}
+.lab .handle::after{content:"‹ ›";position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font:700 15px/1 var(--sans);letter-spacing:3px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.lab .f-lbl{position:absolute;top:14px;z-index:2;border-radius:999px;padding:6px 11px;font:600 11.5px/1 var(--sans)}
+.lab .f-lbl.l{left:14px;background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(4px)}
+.lab .f-lbl.r{right:14px;background:var(--surf);color:var(--ink)}
+.lab .f-side{display:flex;flex-direction:column;gap:16px;padding-top:8px;min-width:0}
+.lab .f-side .h{font-size:calc(34px * var(--hs));line-height:1.02}
+.lab .f-proj{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+.lab .f-proj .cnt{font-size:12px;color:var(--mut)}
+.lab .f-proj b{font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);font-size:calc(24px * var(--hs));line-height:1.1}
+.lab .f-proj span{font-size:12.5px;color:var(--mut);line-height:1.4}
+.lab .f-th{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lab .f-th i{aspect-ratio:1;border-radius:12px;position:relative;overflow:hidden;display:block;outline-offset:2px}
+.lab .f-th i:first-child{outline:2px solid var(--acc)}
+.lab .f-th svg{width:100%;height:100%;display:block}
+.lab .gl{position:absolute;inset:0;background:var(--soft);display:grid;place-items:center}
+.lab .gl svg{width:auto!important;height:62%!important;filter:drop-shadow(0 14px 16px rgba(0,0,0,.18))}
+.lab .f-th i.g{background:var(--soft);display:grid;place-items:center}
+.lab .f-th i.g svg{width:72%;height:72%}
+.lab .tl{font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--acc)}
+.lab .phn .site{padding-top:0}
+.lab .m-nav{display:flex;align-items:center;justify-content:space-between;padding:40px 18px 12px;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.lab .m-nav.lt{color:#F7F2EA;border-color:rgba(255,255,255,.14)}
+.lab .m-nav.lt .mark{background:var(--glow);color:var(--deep)}
+.lab .m-nav .s-logo{font-size:calc(17px * var(--hs));max-width:160px;gap:8px}
+.lab .m-nav .mark{width:24px;height:24px;font-size:11px}
+.lab .s-burger{width:20px;height:12px;border-top:2px solid currentColor;border-bottom:2px solid currentColor;position:relative}
+.lab .s-burger::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:2px solid currentColor}
+.lab .m-body{padding:18px;display:flex;flex-direction:column;gap:14px}
+.lab .m-body .h{font-size:calc(30px * var(--hs));line-height:1.02}
+.lab .m-body .btn1{padding:13px 16px;font-size:13.5px}
+.lab .m-hero{position:relative;height:186px;overflow:hidden;color:#F7F2EA}
+.lab .m-cp{padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.lab .m-cp .kick{font-size:12px}
+.lab .m-cp .h{font-size:calc(29px * var(--hs));line-height:1}
+.lab .m-cp + .m-bk{margin-top:2px}
+.lab .m-hero .m-copy{position:absolute;left:18px;right:18px;bottom:30px;display:flex;flex-direction:column;gap:8px}
+.lab .m-hero .kick{color:var(--glow);font-size:12px}
+.lab .m-hero .h{font-size:calc(31px * var(--hs));line-height:1}
+.lab .m-bk{margin:-14px 12px 0;position:relative;z-index:2;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 30px -20px rgba(0,0,0,.4)}
+.lab .m-bk .t{font-size:13px;font-weight:700}
+.lab .m-row{display:flex;gap:5px}
+.lab .m-row span{flex:1;text-align:center;border:1px solid var(--line);border-radius:10px;padding:8px 0;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lab .m-row span.on{background:var(--acc);border-color:var(--acc);color:var(--accInk);font-weight:600}
+.lab .m-row.t span{font-family:var(--mono)}
+.lab .m-q{border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.lab .m-q .ql{font-size:12.5px;font-weight:700}
+.lab .m-q .chips span{font-size:11px;padding:6px 9px}
+.lab .m-stat{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mut)}
+.lab .m-stat b{font-family:var(--hf);font-weight:var(--hw);font-size:34px;line-height:.8;color:var(--acc)}
+.lab .m-tabs{display:flex;gap:6px;padding:12px 18px 0;overflow:hidden}
+.lab .m-tabs span{padding:7px 12px;border-radius:999px;background:var(--soft);font-size:11.5px;white-space:nowrap;color:var(--mut)}
+.lab .m-tabs span.on{background:var(--ink);color:var(--bg);font-weight:600}
+.lab .m-pg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px}
+.lab .m-pc{border-radius:16px;overflow:hidden}
+.lab .m-pc .s-pg{height:96px;display:grid;place-items:center;background:var(--soft)}
+.lab .m-pc .s-pg svg{height:84%;width:auto}
+.lab .m-pc div:last-child{padding:8px 10px 10px}
+.lab .m-pc b{display:block;font-family:var(--hf);font-weight:var(--hw);letter-spacing:var(--hl);font-size:calc(15px * var(--hs));line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lab .m-pc em{display:block;font:normal 700 12px/1 var(--sans);margin-top:4px}
+.lab .m-bar{position:absolute;left:12px;right:12px;bottom:14px;box-shadow:0 0 0 14px var(--bg),0 -30px 24px 10px var(--bg);display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--bg);border-radius:999px;padding:7px 7px 7px 14px;font-size:11.5px;z-index:3}
+.lab .m-bar span:last-child{background:#25D366;color:#fff;border-radius:999px;padding:8px 12px;font-weight:700}
+.lab .m-img{position:relative;height:230px;margin:12px 12px 0;border-radius:18px;overflow:hidden}
+.lab .m-img .ren,.lab .m-img .bp{position:absolute;inset:0}
+.lab .m-img svg{width:100%;height:100%;display:block}
+.lab .m-img .handle::after{width:30px;height:30px;margin:-15px 0 0 -15px;font-size:12px}
+@media (max-width:960px){
+  .lab .ctl,.lab .stage-col{grid-column:1/-1}
+  .lab .ctl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  .lab .ctl .field,.lab .ctl .goal,.lab .ctl .note{grid-column:1/-1}
+}
+@media (max-width:620px){
+  .lab .ctl{grid-template-columns:1fr}
+  .lab .opt{font-size:13.5px;padding:0 12px}
 }
 
 /* ---------- services ---------- */
@@ -257,11 +473,6 @@
   .mf-side{grid-column:1/-1}
   .pcard,.pnext{grid-column:1/-1}
   .pcard-body .h3,.pc-desc{grid-column:1/-1}
-  .lab-ctl,.lab-pv{grid-column:1/-1}
-  .lab-ctl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-  .lab-ctl .ctl:first-child{grid-column:1/-1}
-  .lab-ctl .lab-note{grid-column:1/-1}
-  .seg-row{grid-template-columns:repeat(3,minmax(0,1fr))}
   .svc-1,.svc-2{grid-column:1/-1}
   .svc-3 .h3,.svc-3 .svc-mid,.svc-3 .svc-end{grid-column:1/-1}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
@@ -282,8 +493,6 @@
   .comp{padding:12px;gap:10px}
   .comp-btn{height:34px;font-size:12px}
   .hero-ctas .btn{width:100%}
-  .lab-ctl{grid-template-columns:1fr}
-  .seg-row{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;row-gap:36px;padding-left:28px}
   .steps::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--line-2)}
   .step-dot{position:absolute;left:-28px;top:20px;margin:0}
@@ -439,57 +648,61 @@
 <section class="dark sec lab" id="laboratorio" aria-labelledby="lab-t">
   <div class="wrap">
     <div class="sec-hd">
-      <p class="eyebrow">03 — Laboratório</p>
-      <h2 class="h2 rv" id="lab-t">Experimente as <em class="lav">possibilidades.</em></h2>
-      <div class="side rv-2"><p class="body">Escolha um segmento, uma paleta e um estilo de tipografia. A mesma estrutura ganha outra personalidade — é assim que um site começa a se parecer com o negócio que representa.</p></div>
+      <p class="eyebrow">03 — Seu site</p>
+      <h2 class="h2 rv" id="lab-t">Veja como ficaria <em class="lav">o seu.</em></h2>
+      <div class="side rv-2"><p class="body">Coloque o nome e o ramo do seu negócio. O site se monta em torno do que o seu cliente precisa fazer: marcar um horário, pedir um orçamento, escolher um produto ou conhecer o seu trabalho.</p></div>
     </div>
-    <div class="lab-grid">
-      <div class="lab-ctl">
-        <fieldset class="ctl"><legend class="mono">Segmento</legend>
-          <div class="seg-row"><button type="button" class="seg-btn on" aria-pressed="true"><span class="seg-n">01</span><span>Odontologia</span></button><button type="button" class="seg-btn" aria-pressed="false"><span class="seg-n">02</span><span>Contabilidade</span></button><button type="button" class="seg-btn" aria-pressed="false"><span class="seg-n">03</span><span>Estética</span></button></div>
-        </fieldset>
-        <fieldset class="ctl"><legend class="mono">Paleta</legend>
-          <div class="pal-row"><button type="button" class="pal-btn on" aria-pressed="true"><span class="pal-sw" aria-hidden="true"><i style="background: #F2F6F4"></i><i style="background: #1F6F64"></i><i style="background: #D3E6E0"></i></span><span>Sereno</span></button><button type="button" class="pal-btn" aria-pressed="false"><span class="pal-sw" aria-hidden="true"><i style="background: #F6F1E8"></i><i style="background: #8A5A2B"></i><i style="background: #EADCC6"></i></span><span>Clássico</span></button><button type="button" class="pal-btn" aria-pressed="false"><span class="pal-sw" aria-hidden="true"><i style="background: #F4F5FF"></i><i style="background: #374CFF"></i><i style="background: #D8DEFF"></i></span><span>Vibrante</span></button><button type="button" class="pal-btn" aria-pressed="false"><span class="pal-sw" aria-hidden="true"><i style="background: #15171C"></i><i style="background: #D9BE82"></i><i style="background: #2A2E37"></i></span><span>Noturno</span></button></div>
-        </fieldset>
-        <fieldset class="ctl"><legend class="mono">Tipografia</legend>
-          <div class="ty-row"><button type="button" class="ty-btn on" aria-pressed="true"><span class="ty-aa" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400" aria-hidden="true">Aa</span><span>Editorial</span></button><button type="button" class="ty-btn" aria-pressed="false"><span class="ty-aa" style="font-family: Geist, system-ui, sans-serif; font-weight: 600" aria-hidden="true">Aa</span><span>Moderna</span></button></div>
-        </fieldset>
-        <p class="small lab-note">Marcas e textos fictícios, criados apenas para esta demonstração.</p>
-      </div>
-      <div class="lab-pv">
-        <div class="bw lab-bw">
-          <div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">lumenodonto · exemplo fictício</span></div>
-          <div class="pv" style="background: #F2F6F4; color: #12302C">
-            <div class="pv-nav" style="border-color: rgba(18,48,44,.14)">
-              <span class="pv-logo"><i style="background: #1F6F64"></i><b style="font-family: 'Instrument Serif', Georgia, serif">Lúmen Odonto</b></span>
-              <span class="pv-links" style="color: #4B5F5B"><span>Tratamentos</span><span>A clínica</span><span>Contato</span></span>
-              <span class="pv-pill" style="border-color: #12302C">Agendar</span>
-            </div>
-            <div class="pv-hero">
-              <div class="pv-copy sw-b">
-                <span class="pv-kick" style="color: #1F6F64">Clínica odontológica</span>
-                <p class="pv-h" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em">Cuidado que começa no primeiro sorriso.</p>
-                <p class="pv-p" style="color: #4B5F5B">Avaliação com hora marcada, explicações claras e um plano feito junto com você.</p>
-                <div class="pv-btns"><span class="pv-btn" style="background: #1F6F64; color: #FFFFFF">Agendar avaliação</span><span class="pv-btn2" style="border-color: rgba(18,48,44,.14)">Ver tratamentos</span></div>
-              </div>
-              <div class="pv-art sw-b" style="background: #D3E6E0" aria-hidden="true">
-                
-                  <span class="s" style="left: 18%; right: 18%; bottom: 0; height: 62%; border-radius: 999px 999px 0 0; background: #1F6F64"></span>
-                  <span class="s" style="left: 30%; right: 30%; bottom: 0; height: 40%; border-radius: 999px 999px 0 0; background: #D3E6E0"></span>
-                  <span class="s" style="right: 14%; top: 12%; width: 16%; aspect-ratio: 1; border-radius: 50%; border: 2px solid #1F6F64"></span>
-                
-                
-                
-              </div>
-            </div>
-            <div class="pv-cards">
-              <div class="pv-card sw-b" style="background: #FFFFFF; border-color: rgba(18,48,44,.14)"><span class="pv-num" style="color: #1F6F64">01</span><b style="font-family: 'Instrument Serif', Georgia, serif">Avaliação</b><span style="color: #4B5F5B">Primeira consulta sem pressa</span></div><div class="pv-card sw-b" style="background: #FFFFFF; border-color: rgba(18,48,44,.14)"><span class="pv-num" style="color: #1F6F64">02</span><b style="font-family: 'Instrument Serif', Georgia, serif">Prevenção</b><span style="color: #4B5F5B">Limpeza e acompanhamento</span></div><div class="pv-card sw-b" style="background: #FFFFFF; border-color: rgba(18,48,44,.14)"><span class="pv-num" style="color: #1F6F64">03</span><b style="font-family: 'Instrument Serif', Georgia, serif">Ortodontia</b><span style="color: #4B5F5B">Alinhadores e aparelhos</span></div>
-            </div>
-          </div>
+    <div class="grid">
+    <div class="ctl">
+      <div class="field">
+        <label class="lbl" for="lab-nm">Nome do seu negócio</label>
+        <div class="in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>
+          <input id="lab-nm" type="text" maxlength="28" autocomplete="off" placeholder="Ex.: Barbearia do Zé">
         </div>
-        <p class="small lab-cap" aria-live="polite">Prévia: Odontologia · paleta Sereno · tipografia Editorial</p>
       </div>
+      <div class="field">
+        <label class="lbl" for="lab-rm">Seu ramo</label>
+        <div class="in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7"/></svg>
+          <input id="lab-rm" type="text" maxlength="32" autocomplete="off" list="lab-ramos" value="Barbearia" placeholder="Ex.: Barbearia, pet shop, contabilidade">
+          <datalist id="lab-ramos"></datalist>
+        </div>
+        <p class="hint" id="lab-hint" aria-live="polite"></p>
+      </div>
+      <fieldset class="goal"><legend>O que seu cliente faz no site?</legend>
+        <div class="row" id="lab-goals">
+          <button type="button" class="opt" data-goal="agenda" aria-pressed="false"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Marca horário</button>
+          <button type="button" class="opt" data-goal="orcamento" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>Pede orçamento</button>
+          <button type="button" class="opt" data-goal="produtos" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>Escolhe produtos</button>
+          <button type="button" class="opt" data-goal="trabalhos" aria-pressed="false"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.5"/></svg>Vê seus trabalhos</button>
+        </div>
+      </fieldset>
+      <fieldset><legend>Cores</legend>
+        <div class="row" id="lab-pals"></div>
+      </fieldset>
+      <fieldset><legend>Estilo</legend>
+        <div class="row" id="lab-types">
+          <button type="button" class="opt" data-ty="elegante" aria-pressed="true"><span class="aa" style="font-family:var(--serif)">Aa</span>Elegante</button>
+          <button type="button" class="opt" data-ty="direto" aria-pressed="false"><span class="aa" style="font-weight:800;letter-spacing:-.03em">Aa</span>Direto</button>
+        </div>
+      </fieldset>
+      <p class="note">Exemplo fictício: nomes, preços e avaliações só ilustram. O seu site é feito do zero, para o seu negócio.</p>
     </div>
+
+    <div class="stage-col">
+      <div class="lab-stage" id="lab-stage">
+        <div class="canvas">
+          <div class="lap" aria-hidden="true">
+            <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><b data-slug></b>.com.br</span></div>
+            <div class="site" id="lab-desk"></div>
+          </div>
+          <div class="phn" aria-hidden="true"><div class="ph-in"><span class="notch"></span><div class="site" id="lab-mob"></div></div></div>
+        </div>
+      </div>
+      <p class="cap" id="lab-cap" aria-live="polite"></p>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -668,48 +881,7 @@
 </footer>
 
 </div>
-<script type="text/x-lab" id="lab-tpl"><div class="bw lab-bw">
-          <div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">{{ seg.domain }}</span></div>
-          <div class="pv" style="background: {{ pal.bg }}; color: {{ pal.ink }}">
-            <div class="pv-nav" style="border-color: {{ pal.line }}">
-              <span class="pv-logo"><i style="background: {{ pal.accent }}"></i><b style="font-family: {{ hf }}">{{ seg.brand }}</b></span>
-              <span class="pv-links" style="color: {{ pal.muted }}"><span>{{ seg.l1 }}</span><span>{{ seg.l2 }}</span><span>Contato</span></span>
-              <span class="pv-pill" style="border-color: {{ pal.ink }}">{{ seg.navcta }}</span>
-            </div>
-            <div class="pv-hero">
-              <div class="pv-copy {{ anim }}">
-                <span class="pv-kick" style="color: {{ pal.accent }}">{{ seg.kicker }}</span>
-                <p class="pv-h" style="font-family: {{ hf }}; font-weight: {{ hw }}; letter-spacing: {{ hls }}">{{ seg.title }}</p>
-                <p class="pv-p" style="color: {{ pal.muted }}">{{ seg.sub }}</p>
-                <div class="pv-btns"><span class="pv-btn" style="background: {{ pal.accent }}; color: {{ pal.accentInk }}">{{ seg.cta }}</span><span class="pv-btn2" style="border-color: {{ pal.line }}">{{ seg.cta2 }}</span></div>
-              </div>
-              <div class="pv-art {{ anim }}" style="background: {{ pal.soft }}" aria-hidden="true">
-                <sc-if value="{{ seg.isA }}" hint-placeholder-val="{{ true }}">
-                  <span class="s" style="left: 18%; right: 18%; bottom: 0; height: 62%; border-radius: 999px 999px 0 0; background: {{ pal.accent }}"></span>
-                  <span class="s" style="left: 30%; right: 30%; bottom: 0; height: 40%; border-radius: 999px 999px 0 0; background: {{ pal.soft }}"></span>
-                  <span class="s" style="right: 14%; top: 12%; width: 16%; aspect-ratio: 1; border-radius: 50%; border: 2px solid {{ pal.accent }}"></span>
-                </sc-if>
-                <sc-if value="{{ seg.isB }}" hint-placeholder-val="{{ false }}">
-                  <span class="s" style="left: 14%; bottom: 14%; width: 13%; height: 30%; border-radius: 6px; background: {{ pal.accent }}; opacity: .45"></span>
-                  <span class="s" style="left: 33%; bottom: 14%; width: 13%; height: 46%; border-radius: 6px; background: {{ pal.accent }}; opacity: .7"></span>
-                  <span class="s" style="left: 52%; bottom: 14%; width: 13%; height: 38%; border-radius: 6px; background: {{ pal.accent }}; opacity: .55"></span>
-                  <span class="s" style="left: 71%; bottom: 14%; width: 13%; height: 64%; border-radius: 6px; background: {{ pal.accent }}"></span>
-                  <span class="s" style="left: 10%; right: 10%; bottom: 14%; height: 2px; background: {{ pal.ink }}; opacity: .5"></span>
-                </sc-if>
-                <sc-if value="{{ seg.isC }}" hint-placeholder-val="{{ false }}">
-                  <span class="s" style="left: 12%; top: 18%; width: 56%; aspect-ratio: 1; border-radius: 50%; background: {{ pal.accent }}; opacity: .85"></span>
-                  <span class="s" style="right: 10%; bottom: 14%; width: 46%; aspect-ratio: 1; border-radius: 50%; border: 2px solid {{ pal.accent }}"></span>
-                  <span class="s" style="right: 26%; top: 12%; width: 12%; aspect-ratio: 1; border-radius: 50%; background: {{ pal.ink }}; opacity: .7"></span>
-                </sc-if>
-              </div>
-            </div>
-            <div class="pv-cards">
-              <sc-for list="{{ seg.services }}" as="v" hint-placeholder-count="3"><div class="pv-card {{ anim }}" style="background: {{ pal.surface }}; border-color: {{ pal.line }}"><span class="pv-num" style="color: {{ pal.accent }}">{{ v.n }}</span><b style="font-family: {{ hf }}">{{ v.t }}</b><span style="color: {{ pal.muted }}">{{ v.d }}</span></div></sc-for>
-            </div>
-          </div>
-        </div>
-        <p class="small lab-cap" aria-live="polite">Prévia: {{ seg.label }} · paleta {{ pal.label }} · tipografia {{ ty.label }}</p></script>
-<script type="application/json" id="lab-data">{"segs":[{"label":"Odontologia","n":"01","brand":"Lúmen Odonto","domain":"lumenodonto · exemplo fictício","l1":"Tratamentos","l2":"A clínica","navcta":"Agendar","kicker":"Clínica odontológica","title":"Cuidado que começa no primeiro sorriso.","sub":"Avaliação com hora marcada, explicações claras e um plano feito junto com você.","cta":"Agendar avaliação","cta2":"Ver tratamentos","services":[{"n":"01","t":"Avaliação","d":"Primeira consulta sem pressa"},{"n":"02","t":"Prevenção","d":"Limpeza e acompanhamento"},{"n":"03","t":"Ortodontia","d":"Alinhadores e aparelhos"}],"isA":true,"isB":false,"isC":false,"id":"odonto","pressed":"true","cls":"on"},{"label":"Contabilidade","n":"02","brand":"Prisma Contábil","domain":"prismacontabil · exemplo fictício","l1":"Serviços","l2":"Escritório","navcta":"Falar conosco","kicker":"Contabilidade consultiva","title":"Suas contas em ordem, seu negócio em frente.","sub":"Contabilidade próxima para pequenas e médias empresas, com números explicados em linguagem simples.","cta":"Falar com um contador","cta2":"Nossos serviços","services":[{"n":"01","t":"Abertura","d":"Empresa regularizada do jeito certo"},{"n":"02","t":"Folha","d":"Rotina de pessoal em dia"},{"n":"03","t":"Tributos","d":"Planejamento e obrigações"}],"isA":false,"isB":true,"isC":false,"id":"conta","pressed":"false","cls":""},{"label":"Estética","n":"03","brand":"Atelier Lírio","domain":"atelierlirio · exemplo fictício","l1":"Protocolos","l2":"O espaço","navcta":"Reservar","kicker":"Estética e bem-estar","title":"Beleza com técnica, cuidado com você.","sub":"Protocolos personalizados em um espaço pensado para o seu bem-estar, do acolhimento ao pós-atendimento.","cta":"Reservar horário","cta2":"Conhecer protocolos","services":[{"n":"01","t":"Pele","d":"Limpeza e revitalização"},{"n":"02","t":"Corpo","d":"Massagens e drenagem"},{"n":"03","t":"Olhar","d":"Design de sobrancelhas"}],"isA":false,"isB":false,"isC":true,"id":"estetica","pressed":"false","cls":""}],"pals":[{"label":"Sereno","bg":"#F2F6F4","surface":"#FFFFFF","ink":"#12302C","muted":"#4B5F5B","accent":"#1F6F64","accentInk":"#FFFFFF","soft":"#D3E6E0","line":"rgba(18,48,44,.14)","id":"sereno","pressed":"true","cls":"on"},{"label":"Clássico","bg":"#F6F1E8","surface":"#FFFDF8","ink":"#251E17","muted":"#66594B","accent":"#8A5A2B","accentInk":"#FFFFFF","soft":"#EADCC6","line":"rgba(37,30,23,.14)","id":"classico","pressed":"false","cls":""},{"label":"Vibrante","bg":"#F4F5FF","surface":"#FFFFFF","ink":"#14163A","muted":"#50547F","accent":"#374CFF","accentInk":"#FFFFFF","soft":"#D8DEFF","line":"rgba(20,22,58,.14)","id":"vibrante","pressed":"false","cls":""},{"label":"Noturno","bg":"#15171C","surface":"#1F2229","ink":"#F2EFE8","muted":"#ABACB2","accent":"#D9BE82","accentInk":"#15171C","soft":"#2A2E37","line":"rgba(242,239,232,.14)","id":"noturno","pressed":"false","cls":""}],"types":[{"label":"Editorial","ff":"'Instrument Serif', Georgia, serif","w":400,"ls":"-0.01em","id":"editorial","pressed":"true","cls":"on"},{"label":"Moderna","ff":"Geist, system-ui, sans-serif","w":600,"ls":"-0.035em","id":"moderna","pressed":"false","cls":""}]}</script>
 <script src="assets/js/site.js" defer></script>
+<script src="assets/js/lab.js" defer></script>
 </body>
 </html>
