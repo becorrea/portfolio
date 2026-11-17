@@ -73,6 +73,10 @@ f.addEventListener('load', () => setTimeout(async () => {
       const need = (fs >= 24 || (fs >= 18.66 && fw >= 700)) ? 3 : 4.5, got = ratio(fg, bg);
       if (got < need) out.push(`${got.toFixed(2)}<${need} "${e.textContent.trim().slice(0, 40)}" fg=${s.color} bg=rgb(${bg.slice(0, 3).map(Math.round).join(',')}) ${path(e)}`);
     } return { out, skipped }; };
+  // contato: chip marcado e campo preenchido (nunca envia; fetch bloqueado no wrapper)
+  const chip = d.querySelector('.chip'), nome = d.querySelector('#f-nome');
+  if (chip) chip.click();
+  if (nome) { nome.value = 'Teste'; nome.dispatchEvent(new w.Event('input', { bubbles: true })); }
   const c = contrast(CFG.scope); r.contrast = c.out; r.skipped = c.skipped;
   r.darkSec = [...d.querySelectorAll('.dark')].filter(e => !inMock(e) && (!CFG.scope || e.closest(CFG.scope)))
     .filter(e => cs(e).backgroundColor !== CFG.darkBg).map(e => path(e) + ' bg=' + cs(e).backgroundColor);
