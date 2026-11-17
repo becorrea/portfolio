@@ -19,16 +19,16 @@
 .sv-hgrid h1{grid-column:1/span 10}
 .sv-hgrid .lead{grid-column:1/span 6}
 .jump{grid-column:8/span 5;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-.jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;font:450 14px/1 var(--sans);text-decoration:none;color:var(--ink);transition:background-color .2s,border-color .2s,color .2s}
+.jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;font:500 14px/1 var(--sans);text-decoration:none;color:var(--ink);transition:background-color .2s,border-color .2s,color .2s}
 .jump a:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .sd{border-top:1px solid var(--line-2);padding-block:clamp(56px,7vw,104px)}
 .sd-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;align-items:start}
 .sd-side{grid-column:1/span 4;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
-.sd-n{font:400 96px/.9 var(--serif);color:var(--blue);letter-spacing:-.03em}
-.sd-side .h2{font-size:clamp(42px,4.6vw,72px)}
-.sd-price{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;background:#DDE4FF;align-self:stretch}
-.sd-price .mono{color:#3A4170;font-size:11px}
-.sd-price b{font:400 40px/1 var(--serif);letter-spacing:-.01em}
+.sd-n{font:800 72px/1 var(--sans);color:var(--blue);letter-spacing:-.03em}
+.sd-side .h2{font-size:clamp(36px,4vw,56px)}
+.sd-price{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;background:var(--gray);align-self:stretch}
+.sd-price .mono{color:var(--ink-2);font-size:11px}
+.sd-price b{font:800 32px/1.05 var(--sans);letter-spacing:-.03em}
 .sd-main{grid-column:6/span 7;display:flex;flex-direction:column}
 .sd-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
 .sd-row:first-child{padding-top:0}
@@ -41,24 +41,25 @@
 .sd.dk{background:var(--ink);color:var(--paper);border-top:0}
 .sd.dk .sd-row{border-color:var(--d-line)}
 .sd.dk .sd-row>.mono{color:var(--d-muted)}
-.sd.dk .chk li{color:#D3D6DC}
+.sd.dk .chk li{color:#CFCDC8}
 .sd.dk .chk li::before{border-color:var(--lav)}
 .sd.dk .sd-n{color:var(--lav)}
-.cmp-box{overflow-x:auto;border:1px solid var(--line);border-radius:22px;background:#FBFAF8}
+.cmp-box{overflow-x:auto;border:1px solid var(--line);border-radius:22px;background:#fff}
 .cmp{width:100%;min-width:640px;border-collapse:collapse;font:400 15px/1.45 var(--sans)}
 .cmp th,.cmp td{text-align:left;padding:18px 24px;border-bottom:1px solid var(--line);vertical-align:top}
-.cmp thead th{font:400 30px/1.1 var(--serif);letter-spacing:-.01em;padding-top:28px;padding-bottom:22px}
+.cmp thead th{font:800 22px/1.15 var(--sans);letter-spacing:-.03em;padding-top:28px;padding-bottom:22px}
 .cmp thead th:first-child{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:bottom}
 .cmp tbody th{font:500 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);width:26%}
 .cmp td{color:var(--ink-2);width:37%}
 .cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
-.cmp .col-hi{background:rgba(184,199,255,.22)}
+.cmp .col-hi{background:rgba(142,166,255,.22)}
 .yes{display:inline-flex;align-items:center;gap:8px}
 .yes::before{content:"";width:12px;height:7px;border-left:1.6px solid var(--blue);border-bottom:1.6px solid var(--blue);transform:rotate(-45deg) translateY(-2px)}
 .custom{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px;align-items:center;padding:clamp(28px,4vw,48px);border-radius:24px;background:var(--blue);color:#fff}
 .custom .h3{grid-column:1/span 7;color:#fff}
 .custom .cu-side{grid-column:9/span 4;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-.custom p.body{color:#E4E8FF}
+.custom p.body{color:var(--gray)}
+.custom .h3 em{color:#fff}
 .custom :focus-visible{outline-color:#fff}
 @media (max-width: 960px){
   .sv-hgrid h1,.sv-hgrid .lead,.jump{grid-column:1/-1}
@@ -70,7 +71,7 @@
 @media (max-width: 600px){
   .sd-row{grid-template-columns:1fr;gap:12px}
   .chk{grid-template-columns:1fr}
-  .sd-n{font-size:72px}
+  .sd-n{font-size:56px}
 }
 </style>
 <style>[hidden]{display:none!important}</style>
@@ -101,7 +102,7 @@
 <section class="sv-hero" aria-labelledby="sv-t">
   <div class="wrap sv-hgrid">
     <p class="eyebrow" style="animation: fadeIn .7s var(--ease) both">Serviços</p>
-    <h1 class="h-display" id="sv-t"><span class="ln"><span>Sites no tamanho</span></span><span class="ln"><span><em class="blue">certo</em> para o</span></span><span class="ln"><span>seu negócio.</span></span></h1>
+    <h1 class="h-display" id="sv-t"><span class="ln"><span>Sites no tamanho</span></span><span class="ln"><span>certo para o</span></span><span class="ln"><span><em class="blue">seu negócio.</em></span></span></h1>
     <p class="lead" style="animation: fadeIn .9s .4s var(--ease) both">Sem letras miúdas: aqui está o que cada serviço inclui, para quem ele é indicado e o que fica de fora. Os detalhes finais sempre vão na proposta.</p>
     <nav class="jump" aria-label="Ir para" style="animation: fadeIn .9s .55s var(--ease) both"><a href="#essencial">Essencial</a><a href="#profissional">Profissional</a><a href="#manutencao">Manutenção</a><a href="#comparacao">Comparação</a></nav>
   </div>
@@ -145,7 +146,7 @@
   </div>
 </section>
 
-<section class="sd dk" id="manutencao" aria-labelledby="manutencao-t">
+<section class="sd dk dark" id="manutencao" aria-labelledby="manutencao-t">
   <div class="wrap sd-grid">
     <div class="sd-side">
       <span class="sd-n" aria-hidden="true">03</span>
