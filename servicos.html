@@ -30,8 +30,7 @@
 .sd-side .h2{font-size:clamp(36px,4vw,56px)}
 .sd-price{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;background:var(--tint);align-self:stretch}
 .sd-price .mono{color:var(--fg-2);font-size:11px}
-.sd-price b{font:800 32px/1.05 var(--sans);letter-spacing:-.03em;color:var(--accent)}
-.sd-price s{font-size:.9em;opacity:.7}
+.sd-price .mono{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .sd-main{grid-column:6/span 7;display:flex;flex-direction:column}
 .sd-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
 .sd-row:first-child{padding-top:0}
@@ -118,7 +117,7 @@
       <span class="sd-n" aria-hidden="true">01</span>
       <span class="tag">Página única</span>
       <h2 class="h2" id="essencial-t">Site <em>Essencial</em></h2>
-      <div class="sd-price"><span class="mono">Investimento</span><span>a partir de <s>R$ 799</s> <b>R$ 599</b></span></div>
+      <div class="sd-price"><span class="mono">Investimento a partir de <span class="off">-25%</span></span><span class="pr-row"><s>R$ 799</s> <b><small>R$</small>599</b></span></div>
       <a class="btn btn-ink" href="contato.html">Solicitar orçamento <svg class="ic arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
     </div>
     <div class="sd-main">

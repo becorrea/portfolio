@@ -88,6 +88,12 @@ em{font-style:normal;font-weight:600}
 .tag-demo::before{content:"";width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor}
 .tag-com{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .tag-com::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lav)}
+/* preço de oferta: R$ riscado + R$ novo com "R$" alto e selo de desconto */
+.off{display:inline-block;padding:5px 9px;border-radius:999px;font:600 11px/1 var(--mono);letter-spacing:.06em;background:var(--accent);color:var(--bg)}
+.pr-row{display:flex;align-items:baseline;gap:12px}
+.pr-row s{font:600 20px/1 var(--sans);letter-spacing:-.02em;opacity:.55}
+.pr-row b{font:800 42px/1 var(--sans);letter-spacing:-.04em;color:var(--accent)}
+.pr-row b small{font-size:.42em;font-weight:700;letter-spacing:0;vertical-align:1.1em;margin-right:3px}
 .dark .tag{border-color:rgba(248,245,242,.28);color:#E4E2DE}
 
 .ph{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border:1px dashed var(--accent);border-radius:6px;font:500 12px/1.4 var(--mono);color:var(--accent);background:rgba(10,51,255,.06);letter-spacing:.02em}
