@@ -21,7 +21,7 @@
 .ct-grid h1{grid-column:1/span 8}
 .ct-grid .lead{grid-column:9/span 4}
 .chan{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
-.chan a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:280px;padding:clamp(26px,3vw,40px);border-radius:26px;text-decoration:none;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.chan a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(28px,3vw,40px);padding:clamp(26px,3vw,40px);border-radius:26px;text-decoration:none;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .chan a:hover{transform:translateY(-6px)}
 .chan .wa{grid-column:span 7;background:var(--blue);color:#fff}
 .chan .wa:hover{color:#fff;box-shadow:0 40px 70px -40px rgba(10,51,255,.9)}
@@ -69,7 +69,7 @@ fieldset.fld legend{margin-bottom:10px;padding:0}
 @media (max-width: 960px){
   .ct-grid h1,.ct-grid .lead{grid-column:1/-1}
   .chan .wa,.chan .em{grid-column:1/-1}
-  .chan a{min-height:200px}
+
   .fm-intro{grid-column:1/-1;position:static}
   .fm{grid-column:1/-1}
   .first{grid-template-columns:1fr}
@@ -116,7 +116,7 @@ fieldset.fld legend{margin-bottom:10px;padding:0}
   </div>
 </section>
 
-<section aria-label="Canais diretos" style="padding-bottom: clamp(88px, 10vw, 150px)">
+<section aria-label="Canais diretos" style="padding-bottom: clamp(56px, 6vw, 96px)">
   <div class="wrap chan">
     <a class="wa rv" href="https://wa.me/5511998150501?text=Ol%C3%A1%2C%20Stelqo!%20Vi%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20site.">
       <span class="top"><span class="mono">WhatsApp · resposta mais rápida</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2L9 9.5z"></path></svg></span>
